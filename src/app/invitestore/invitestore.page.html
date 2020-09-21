@@ -1,0 +1,26 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>更换主播</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-text>亲爱的：{{userInfo.uname}}</ion-text>
+  <ion-text>您绑定的店铺：{{shopname}}</ion-text>
+  <ion-text>请输入您要重新绑定的邀请码</ion-text>
+  <ion-input class="yinput" placeholder="请输入邀请码" maxlength="10" [(ngModel)]="code" (ionChange)="change()"></ion-input>
+  <ion-button fill="clear" shape="round" [ngStyle]="{'background': codeleng>4?'#ff6b71':'#f88d90'}" (tap)="changeZb()">
+    绑定</ion-button>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+
+</ion-content>

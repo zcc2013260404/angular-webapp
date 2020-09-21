@@ -1,0 +1,100 @@
+.rcolor {
+    color: #ff6b71;
+}
+.rbackground {
+    background-color: #ff6b71 !important;
+}
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.3rem;
+}
+ul,
+ol {
+    list-style-type: none;
+}
+.clearfix {
+    &::after {
+        display: block;
+        content: "";
+        height: 0px;
+        clear: both;
+    }
+}
+.swiper-pagination-bullet-active {
+    background: #ff6b71 !important;
+}
+ion-refresher {
+    .refresher-pulling {
+        .refresher-pulling-icon {
+            ion-icon {
+                color: #fa2229 !important;
+            }
+        }
+        .refresher-pulling-text {
+            color: #fa2229 !important;
+        }
+    }
+    .refresher-refreshing {
+        .refresher-refreshing-icon {
+            ion-spinner {
+                color: #fa2229 !important;
+            }
+        }
+        .refresher-refreshing-text {
+            color: #fa2229 !important;
+        }
+    }
+}
+.loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3rem;
+    height: 3rem;
+    color: #fa2229 !important;
+}

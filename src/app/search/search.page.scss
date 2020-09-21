@@ -1,0 +1,229 @@
+@import "../../assets/img/search/search_iconfont.css";
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ion-toolbar {
+  padding-left: 1rem;
+  .gobtxt {
+    color: #000000;
+    font-size: 1.3rem;
+  }
+  .gobbtn {
+    margin-left: 1rem;
+  }
+  .sinput {
+    background: #f7f7f7;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    border-radius: 1.4rem;
+    ion-icon {
+      float: left;
+      color: #a3a3a3;
+      font-size: 2rem;
+      padding: 0.4rem 0.4rem 0.4rem 1rem;
+    }
+  }
+}
+.sbg {
+  --background: #ffffff !important;
+}
+ion-content {
+  --background: #f2f2f2;
+  --color: #000;
+  --padding-top: 1rem;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  .stbar {
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    ion-icon {
+      float: left;
+    }
+    ion-text {
+      float: left;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+  }
+  .hbox {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    ion-text {
+      float: left;
+      padding: 0.6rem 1rem;
+      margin-right: 1rem;
+      background: #ffffff;
+      border-radius: 1.5rem;
+      font-size: 1.2rem;
+    }
+  }
+  .lbox {
+    width: 100%;
+    height: auto;
+    ion-text {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      margin: 0.5rem;
+      background: #eeeeee;
+      border-radius: 1.5rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  .slist {
+    ul {
+      width: 100%;
+      background: white;
+    }
+    li {
+      position: relative;
+      width: 100%;
+      height: 12rem;
+      background: white;
+      border-bottom: 1px solid #f3f3f3;
+      padding-left: 12rem;
+      margin-bottom: 0.5rem;
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 12rem;
+        border-top-left-radius: 0.6rem;
+        border-bottom-left-radius: 0.6rem;
+      }
+      .sproinfo {
+        height: 100%;
+        padding: 1rem;
+        .sproms {
+          width: 100%;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        .sprokc {
+          width: 100%;
+          display: block;
+          padding: 1rem 0rem;
+          color: #757575;
+        }
+        .sprojg {
+          color: #e42d41;
+          font-size: 1.8rem;
+        }
+        .sprofg {
+          position: absolute;
+          right: 1rem;
+          bottom: 1rem;
+          background: #fe5b54;
+          color: white;
+          width: 8rem;
+          height: 2.5rem;
+          text-align: center;
+          line-height: 2.5rem;
+          border-radius: 1.3rem;
+          font-size: 1.4rem;
+          box-shadow: 0px 5px 5px 0px #eee;
+        }
+      }
+    }
+
+    .rleft {
+      padding-right: 0.6rem;
+    }
+    .rright {
+      padding-left: 0.6rem;
+    }
+    .liveitem {
+      display: inline-block;
+      background: white;
+      border-top-left-radius: 0.6rem;
+      border-top-right-radius: 0.6rem;
+      text-align: center;
+      .ltitle {
+        position: absolute;
+        left: 0rem;
+        top: 0rem;
+        width: 100%;
+        height: 3rem;
+        color: white;
+        font-size: 1.2rem;
+        text-align: left;
+        padding: 1rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+      .linfo {
+        position: absolute;
+        right: 1rem;
+        bottom: 3rem;
+        width: 6rem;
+        height: 4.5rem;
+        .lstatus {
+          width: 100%;
+          height: 1.6rem;
+          line-height: 1.6rem;
+          text-align: center;
+          font-size: 1.2rem;
+          color: white;
+          background: #666666;
+          border-radius: 0.5rem;
+        }
+        .lstxt {
+          width: 100%;
+          height: 1.8rem;
+          line-height: 1.8rem;
+          text-align: center;
+          font-size: 1rem;
+          color: white;
+        }
+      }
+      img {
+        width: 100%;
+        height: 15rem;
+        border-radius: 0.6rem;
+      }
+      .lper {
+        width: 100%;
+        padding: 0.5rem 0rem;
+        .lper-pic {
+          float: left;
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          margin-left: 0.5rem;
+        }
+        .lper-txt {
+          float: left;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          word-break: break-all;
+          max-width: 10rem;
+          margin-left: 0.5rem;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+.nomore {
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  border-top: 1px solid #f1f1f1;
+}

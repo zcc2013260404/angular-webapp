@@ -1,0 +1,38 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>我的预告</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="ndata" *ngIf="liveList.length==0">还没有任务内容哦~</div>
+  <div class="lvlist">
+    <ul>
+      <li *ngFor="let item of liveList">
+        <img [src]="item.pic" />
+        <div class="lvproinfo">
+          <div class="lvproh">
+            <ion-text class="hbtn">预告</ion-text>
+          </div>
+          <div class="lvprot">{{item.ltxt}}</div>
+          <div class="lvprob">
+            <ion-text class="lbtn">
+              <ion-icon class="dbtn" name="trash-outline"></ion-icon>
+              <ion-text>删除</ion-text>
+            </ion-text>
+            <ion-text class="lbtn" style="margin-left: 1.5rem;">
+              <ion-icon class="rbtn" name="enter-outline"></ion-icon>
+              <ion-text>&nbsp;进入直播间</ion-text>
+            </ion-text>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</ion-content>

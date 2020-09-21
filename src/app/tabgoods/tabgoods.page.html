@@ -1,0 +1,105 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#ff6b71'}">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="lbtns">
+        <ion-button (tap)="goType()">
+          <ion-icon class="htico iconfont icon-fenlei"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" class="message lbtns">
+        <ion-button (tap)="goCart()">
+          <ion-icon class="htico iconfont icon-gouwuche"></ion-icon>
+          <ion-badge color="danger" class="badge" *ngIf="sccount>0">{{sccount}}</ion-badge>
+        </ion-button>
+      </ion-buttons>
+      <ion-input class="sinput" placeholder="点击搜索商品" readonly="true" (click)="goSearch()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-input>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="松开刷新" refreshingSpinner="bubbles"
+      refreshingText="更新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="typebox rbackground">
+    <ion-slides pager="true" #gpicslide [options]="slidesOpts" (ionSlideTouchEnd)="slideTouchEnd()">
+      <ion-slide *ngFor="let item of slidesList">
+        <img-lazy-load [src]="item.pic" [loadingTxtLineHeight]="'12rem'"></img-lazy-load>
+      </ion-slide>
+    </ion-slides>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="2.4" *ngFor="let item of typesList" (tap)="goTypeList(item.gtid,item.gtname)">
+          <div class="typeimgbox">
+            <img-lazy-load [src]="item.pic" [borderRadius]="'50%,50%,50%,50%'" [showLoadingTxt]="false"></img-lazy-load>
+          </div>
+          <div class="typetxt">{{item.gtname}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="tjbox">
+    <ion-text class="mtxt">优质推荐</ion-text>
+    <ion-text class="stxt">万千好货任你挑</ion-text>
+    <div class="yztjlist">
+      <ul class="clearfix" [ngStyle]="{'width': yztjListWidth}">
+        <li *ngFor="let item of yztjList" [routerLink]="['/goodinfo']" [queryParams]="{id:item.gid}">
+          <div class="imglazyloadbox">
+            <img-lazy-load [src]="item.pic" [borderRadius]="'0.5rem,0.5rem,0rem,0rem'" [loadingTxtLineHeight]="'12rem'">
+            </img-lazy-load>
+          </div>
+          <ion-text class="yztjmc">{{item.gn}}</ion-text>
+          <ion-text class="yztjjg">惊爆价：￥{{item.gp}}</ion-text>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tmbox">
+    <div class="tmtitle" >
+      <ion-text class="mtxt">限时特卖</ion-text>
+      <ion-text class="mtime">
+        {{ghour}}点场
+        <ion-text class="mdjs">
+          {{gshour>9?gshour:'0'+gshour}}
+        </ion-text>:
+        <ion-text class="mdjs">
+          {{gsminute>9?gsminute:'0'+gsminute}}
+        </ion-text>:
+        <ion-text class="mdjs">
+          {{gssecond>9?gssecond:'0'+gssecond}}
+        </ion-text>
+      </ion-text>
+      <ion-text class="mall" (tap)="viewAll()">查看全部&nbsp;〉&nbsp;</ion-text>
+    </div>
+    <div class="tmlist">
+      <ul>
+        <li *ngFor="let item of xstmList" [routerLink]="['/goodinfo']" [queryParams]="{id:item.gid}">
+          <img-lazy-load [src]="item.pic" [borderRadius]="'0.6rem,0rem,0.6rem,0rem'" [loadingTxtLineHeight]="'12rem'">
+          </img-lazy-load>
+          <div class="tmproinfo">
+            <ion-text class="tmproms">{{item.gm}}</ion-text>
+            <ion-text class="tmprokc">
+              <ion-text class="bar">
+                <ion-text style="font-size:1.1rem;">仅剩{{item.gk}}件&nbsp;</ion-text>
+                <ion-text class="bfb" [ngStyle]="{'width': item.gb>=100?100:item.gb+'%'}"></ion-text>
+              </ion-text>
+            </ion-text>
+            <ion-text class="tmprojg">￥{{item.nowp}}</ion-text>
+            <ion-text class="tmprofg" (click)="share(item.pic,item.gm,item.gurl);$event.stopPropagation();">分享购买</ion-text>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

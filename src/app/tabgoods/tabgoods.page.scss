@@ -1,0 +1,254 @@
+@import "../../assets/img/goods/goods_iconfont.css";
+
+ion-toolbar {
+    --border-style: normal;
+    --background: #ff6b71;
+}
+.lbtns {
+    height: 52px;
+}
+.htico {
+    width: 40px;
+    color: #ffffff;
+}
+.message {
+    position: relative;
+    .badge {
+        position: absolute;
+        right: -5px;
+        top: 0px;
+        font-size: 1rem;
+        background-color: #ff346c;
+    }
+}
+
+.sinput {
+    background: #ffffff;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    border-radius: 1.4rem;
+    ion-icon {
+        float: left;
+        color: #a3a3a3;
+        font-size: 2rem;
+        padding: 0.4rem 0.4rem 0.4rem 1rem;
+    }
+}
+
+ion-content {
+    --background: #f7f6fb;
+}
+.typebox {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    ion-slides {
+        border-radius: 0.8rem;
+        height: 12rem;
+        ion-slide {
+            width: 100%;
+            height: 12rem;
+            overflow: hidden;
+            img-lazy-load {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    ion-grid {
+        margin: 0.6rem 0rem;
+        ion-col {
+            text-align: center;
+            .typeimgbox {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 100%;
+                background: white;
+                border-radius: 50%;
+                img-lazy-load {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .typetxt {
+                color: white;
+                margin-top: 0.3rem;
+            }
+        }
+    }
+}
+.tjbox {
+    width: 100%;
+    padding: 2rem 1rem;
+    background: white;
+    .mtxt {
+        color: #fe5661;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    .stxt {
+        color: #979797;
+        padding-left: 1rem;
+    }
+    .yztjlist {
+        width: 100%;
+        margin: 15px 0px 0px 0px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        ul {
+            li {
+                width: 12rem;
+                float: left;
+                list-style: none;
+                margin-right: 1rem;
+                border-radius: 0.5rem;
+                text-align: center;
+                .imglazyloadbox {
+                    width: 12rem;
+                    height: 12rem;
+                }
+                .yztjmc {
+                    display: block;
+                    width: 100%;
+                    color: black;
+                    text-align: left;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    line-height: 2.5rem;
+                    font-size: 1.3rem;
+                }
+                .yztjjg {
+                    display: block;
+                    width: 100%;
+                    color: #ea5e68;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+.tmbox {
+    width: 100%;
+    padding: 2rem 1rem;
+    background: #f7f6fb;
+    .tmtitle {
+        width: 100%;
+        .mtxt {
+            float: left;
+            color: #fe5661;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .mtime {
+            display: inline-block;
+            color: white;
+            background: #fe5b54;
+            border-radius: 0.3rem;
+            margin-left: 1rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            padding: 0rem 0.5rem;
+            margin-top: 0px;
+            .mdjs {
+                background: white;
+                color: #cd4c54;
+                border-radius: 0.2rem;
+                padding: 0rem 0.2rem;
+                margin: 0rem 0.2rem;
+                font-size: 1.2rem;
+            }
+        }
+        .mall {
+            float: right;
+            padding-top: 0.5rem;
+            color: #8c8c8c;
+            font-size: 1.1rem;
+            margin-right: -0.8rem;
+        }
+    }
+    .tmlist {
+        background: #f7f6fb;
+        margin-top: 1.5rem;
+        ul {
+            width: 100%;
+        }
+        li {
+            position: relative;
+            width: 100%;
+            height: 12rem;
+            background: white;
+            border-radius: 0.3rem;
+            border: 1px solid #f3f3f3;
+            margin-top: 0.6rem;
+            padding-left: 12rem;
+            img-lazy-load {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 12rem;
+            }
+            .tmproinfo {
+                height: 100%;
+                padding: 1rem;
+                .tmproms {
+                    width: 100%;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+                .tmprokc {
+                    width: 100%;
+                    display: block;
+                    padding: 1rem 0rem;
+                    .bar {
+                        position: relative;
+                        width: 10rem;
+                        height: 1.8rem;
+                        border: 1px solid #ff3e6c;
+                        font-size: 11px;
+                        display: block;
+                        border-radius: 0.9rem;
+                        text-align: right;
+                        color: #ff346c;
+                        .bfb {
+                            position: absolute;
+                            height: 100%;
+                            left: 0px;
+                            top: 0px;
+                            background: #ffe563;
+                            border-top-left-radius: 0.9rem;
+                            border-bottom-left-radius: 0.9rem;
+                        }
+                    }
+                }
+                .tmprojg {
+                    color: #e42d41;
+                    font-size: 1.8rem;
+                }
+                .tmprofg {
+                    position: absolute;
+                    right: 1rem;
+                    bottom: 1rem;
+                    background: #fe5b54;
+                    color: white;
+                    width: 8rem;
+                    height: 2.5rem;
+                    text-align: center;
+                    line-height: 2.5rem;
+                    border-radius: 1.3rem;
+                    font-size: 1.4rem;
+                    box-shadow: 0px 5px 5px 0px #eee;
+                }
+            }
+        }
+    }
+}

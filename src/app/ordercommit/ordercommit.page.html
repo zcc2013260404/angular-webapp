@@ -1,0 +1,112 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>提交订单</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="address-item-box">
+    <div class="oitem-l">
+      <ion-icon slot="start" class="iconfont icon-dizhi rcolor rdz"></ion-icon>
+    </div>
+    <div class="oitem-r" (tap)="configAddress()">
+      <ul>
+        <li class="sp">{{addressData.realname}}&nbsp;&nbsp;{{addressData.mobile}}</li>
+        <li class="sd">{{addressData.address}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="order-box"  *ngFor="let sitem of goods">
+
+
+
+    <div class="order-item-box" >
+    <div class="order-item-title">
+      <ion-text class="stxt">
+        <ion-icon class="iconfont icon-order-store"></ion-icon>{{sitem.sname}}
+      </ion-text>
+    </div>
+
+      <div *ngFor="let ssitem of sitem.goods">
+
+        <div class="order-item-content">
+          <div class="order-item-content-left">
+            <img [src]="ssitem.gpic" />
+          </div>
+          <div class="order-item-content-right">
+            <div class="tinfo">
+              <ion-text class="ttxt">{{ssitem.gtitle}}</ion-text>
+              <ion-text class="gtxt">{{ssitem.goptiontitle}}</ion-text>
+            </div>
+            <div class="pinfo">
+              <ion-text class="ptxt">￥{{ssitem.gprice}} </ion-text>*
+              <ion-text class="ptxt"> {{ssitem.gcount}}</ion-text>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    <div class="order-item-ou">
+      <div class="order-item-ol">
+        <div class="order-item-ol-l">运费</div>
+        <div class="order-item-ol-r">￥{{sitem.dispatch_price}}</div>
+      </div>
+      <div class="order-item-ol" style="border-bottom: 1px solid #f3f3f3">
+        <div class="order-item-ol-l">买家留言</div>
+        <div class="order-item-ol-r">
+          <ion-input placeholder="请与商家协商一致后备注"  [(ngModel)]="sitem.remark"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="order-item-footer">
+      <div class="order-item-footer-info">
+        <ion-text>小计
+          <ion-text class="rcolor" style="font-size:1.5rem;margin: 0rem 1rem;">￥{{sitem.price}}</ion-text>
+        </ion-text>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-box">
+      <div class="footer-box-l">总计
+        <ion-text class="rcolor" style="font-weight: bold;">{{prices}}</ion-text>
+
+      </div>
+      <div class="footer-box-r">
+        <ion-button fill="clear" size="small" class="button button-outline obtn fbtn" (tap)="goBuy()">去支付</ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+<div class="slid-box" [@showChooseType]="showBuy? 'up':'down'">
+  <div class="puytitle">请选择支付方式</div>
+  <div class="puytype" (tap)="checkType(0)">
+    <img src="../../assets/weixin.png" />
+    <ion-text>微信</ion-text>
+    <img src="../../assets/img_checkbox_selected.png" class="ckbox" *ngIf="wxCheck" />
+    <img src="../../assets/img_checkbox_un_selected.png" class="ckbox" *ngIf="!wxCheck" />
+  </div>
+  <div class="puytype" (tap)="checkType(1)">
+    <img src="../../assets/alipay.png" />
+    <ion-text>支付宝</ion-text>
+    <img src="../../assets/img_checkbox_selected.png" class="ckbox" *ngIf="zfbCheck" />
+    <img src="../../assets/img_checkbox_un_selected.png" class="ckbox" *ngIf="!zfbCheck" />
+  </div>
+  <div class="puybutton">
+    <ion-button fill="clear" shape="round" class="rbackground" (tap)="goPay()">去支付</ion-button>
+  </div>
+</div>
+<div class="mask" *ngIf="showBuy" (tap)="closeBuy($event)"></div>

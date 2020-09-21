@@ -1,0 +1,129 @@
+<ion-content class="bgcolor">
+    <div class="ubox rbackground">
+        <div class="uinfo">
+            <div class="uheader">
+                <ion-avatar>
+                    <img *ngIf="!isLogined" src="assets/nologin.png">
+                    <img *ngIf="isLogined" [src]="userInfo.avatar">
+                </ion-avatar>
+            </div>
+            <div class="utxt">
+                <div class="nologintxt" *ngIf="!isLogined" (tap)="goLogin()">
+                    点击登录/注册
+                </div>
+                <div *ngIf="isLogined">
+                    <div class="uname">{{userInfo.uname}}</div>
+                    <div class="uphone">{{userInfo.uphone}}</div>
+                </div>
+            </div>
+        </div>
+        <ion-grid class="sgrid">
+            <ion-row>
+                <ion-col (tap)="goMessage()">
+                    <ion-icon class="iconfont icon-message" style="font-size: 20px;"></ion-icon><br />
+                    <ion-label>消息</ion-label>
+                </ion-col>
+                <ion-col style="padding-left: 15px;" (tap)="goSetting()">
+                    <ion-icon class="iconfont icon-set" style="font-size: 20px;"></ion-icon><br />
+                    <ion-label>设置</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="orderbox">
+        <ion-list lines="full">
+            <ion-item (tap)="goOrder()">
+                <ion-label>我的订单</ion-label>
+                <ion-note slot="end" style="margin-right: -5px;">查看全部</ion-note>
+                <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+            </ion-item>
+        </ion-list>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-icon class="iconfont icon-wallet1 rcolor" style="padding-bottom: 5px;"></ion-icon><br />
+                    <ion-label>待付款</ion-label>
+                    <ion-badge color="danger" class="badge" *ngIf="udata.fcount>0">{{udata.fcount}}</ion-badge>
+                </ion-col>
+                <ion-col>
+                    <ion-icon class="iconfont icon-fahuozhong rcolor" style="padding-bottom: 5px;"></ion-icon><br />
+                    <ion-label>待发货</ion-label>
+                    <ion-badge color="danger" class="badge" *ngIf="udata.scount>0">{{udata.scount}}</ion-badge>
+                </ion-col>
+                <ion-col>
+                    <ion-icon class="iconfont icon-daishouhuo rcolor" style="padding-bottom: 5px;font-size: 24px;">
+                    </ion-icon><br />
+                    <ion-label>待收货</ion-label>
+                    <ion-badge color="danger" class="badge" *ngIf="udata.rcount>0">{{udata.rcount}}</ion-badge>
+                </ion-col>
+                <ion-col>
+                    <ion-icon class="iconfont icon-yiwancheng1 rcolor" style="padding-bottom: 5px;"></ion-icon><br />
+                    <ion-label>已完成</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-icon class="iconfont icon-tuihuo- rcolor" style="padding-bottom: 5px;"></ion-icon><br />
+                    <ion-label>退款/售后</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <ion-list lines="full">
+        <ion-item (tap)="goTecoin()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" class="item-icon-left iconfont icon-moneycollect"></ion-icon>
+            <ion-label>我的微莕币</ion-label>
+            <ion-note slot="end" *ngIf="udata.bcount&&udata.bcount>0">{{udata.bcount}}个</ion-note>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item (tap)="goDcoupon()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-youhuiquan"></ion-icon>
+            <ion-label>我的优惠券</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item (tap)="goAddress()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-dizhi"></ion-icon>
+            <ion-label>我的收货地址</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item (tap)="goNameauth()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-renzheng"></ion-icon>
+            <ion-label>实名认证</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <!-- <ion-item>
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-kefu"></ion-icon>
+            <ion-label>官方客服</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item> -->
+        <ion-item (tap)="goInvite()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-yaoqingchengyuan"></ion-icon>
+            <ion-label>邀请店铺</ion-label>
+            <ion-note slot="end">{{udata.sname}}</ion-note>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item (tap)="goCreateLive()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-shipinzhibo"></ion-icon>
+            <ion-label>创建直播</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item (tap)="goAdvanceLive()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-wodeyugao"></ion-icon>
+            <ion-label>我的预告</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item (tap)="goMyLive()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-wodezhibo"></ion-icon>
+            <ion-label>我的直播</ion-label>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" (tap)="goMybalance()" [style.touch-action]="'pan-y'">
+            <ion-icon slot="start" name="people" class="item-icon-left iconfont icon-xinbaniconshangchuan-"></ion-icon>
+            <ion-label>我的余额</ion-label>
+            <ion-note slot="end" *ngIf="isLogined">{{udata.esum}}元</ion-note>
+            <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+        </ion-item>
+    </ion-list>
+
+    <div class="loading" *ngIf="isloading">
+        <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+    </div>
+</ion-content>

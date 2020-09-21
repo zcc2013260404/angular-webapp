@@ -1,0 +1,148 @@
+ion-toolbar {
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+}
+ion-content {
+    --padding-top: 1rem;
+    --padding-start: 1rem;
+    --padding-bottom: 1rem;
+    --padding-end: 1rem;
+    --background: #f4f4f4;
+    .box {
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        .title {
+            width: 100%;
+            height: 3rem;
+            line-height: 3rem;
+            font-size: 1.2rem;
+            padding-left: 1rem;
+            background: #f8f8f8;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        .content {
+            width: 100%;
+            padding: 3rem;
+            padding-left: 8rem;
+        }
+        ul,
+        li {
+            /*做时间轴的线*/
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #000000;
+        }
+
+        .layui-timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+            margin-top: -12px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .layui-timeline-item:first-child::before {
+            display: block;
+        }
+
+        .layui-timeline-item:last-child::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 0;
+            z-index: 0;
+            width: 0;
+        }
+
+        .layui-timeline-item::before {
+            content: "";
+            position: absolute;
+            /* left: 5px; */
+            top: 0;
+            z-index: 0;
+            width: 1px;
+            height: 100%;
+        }
+
+        .layui-timeline-item::before,
+        hr {
+            background-color: #ff6b71;
+        }
+
+        .layui-timeline-axis {
+            position: absolute;
+            left: -5px;
+            top: 0;
+            z-index: 10;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            background-color: #fff;
+            color: #5fb878;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .layui-icon {
+            font-family: layui-icon !important;
+            font-size: 16px;
+            font-style: normal;
+        }
+
+        .layui-timeline-content {
+            padding-left: 25px;
+        }
+
+        .layui-text {
+            line-height: 2rem;
+            font-size: 1.3rem;
+            color: #666;
+            top: -10px;
+        }
+
+        .layui-timeline-title {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid #ff6b71;
+        }
+
+        .etime-first {
+            top: 45%;
+            left: -100px;
+            position: absolute;
+        }
+
+        .time-first {
+            position: absolute;
+            left: -5.5rem;
+            top: -0.5rem;
+            font-size: 1.4rem;
+            .tm {
+                font-size: 1.2rem;
+                float: right;
+            }
+        }
+    }
+}

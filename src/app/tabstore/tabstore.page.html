@@ -1,0 +1,48 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-title>店铺精选</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="松开刷新" refreshingSpinner="bubbles"
+      refreshingText="更新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="stitle">
+    <div class="sbpic">
+      <img-lazy-load [src]="spic" *ngIf="spic" [loadingTxtLineHeight]="'15rem'"></img-lazy-load>
+    </div>
+    <div class="sinfo">
+      <div class="sinfo-ico">
+        <ion-avatar>
+          <img-lazy-load [src]="logo" *ngIf="logo" [loadingTxtLineHeight]="'15rem'"></img-lazy-load>
+        </ion-avatar>
+      </div>
+      <div class="sinfo-dsc">
+        <div class="sinfo-dsc-name">{{sn}}</div>
+        <div class="sinfo-dsc-info">{{sm}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scontent">
+    <ul>
+      <li *ngFor="let item of storeProList" [routerLink]="['/goodinfo']" [queryParams]="{id:item.id}">
+        <img-lazy-load [src]="item.thumb" [borderRadius]="'0.8rem,0.8rem,0.8rem,0.8rem'"
+          [loadingTxtLineHeight]="'16rem'"></img-lazy-load>
+        <ion-text class="sdsc">{{item.title}}</ion-text>
+        <ion-text class="snpri rcolor">￥{{item.marketprice}}<ion-text class="sopri">{{item.productprice}}</ion-text>
+        </ion-text>
+      </li>
+    </ul>
+  </div>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

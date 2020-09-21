@@ -1,0 +1,249 @@
+@import "../../assets/img/live/live_iconfont.css";
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 22px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ion-toolbar {
+    --background: #ff6b71;
+    --border-style: normal;
+}
+.lbtns {
+    height: 52px;
+}
+.htico {
+    width: 40px;
+    color: #ffffff;
+}
+.message {
+    position: relative;
+    .badge {
+        position: absolute;
+        right: -5px;
+        top: 0px;
+        font-size: 1rem;
+        background-color: #ff346c;
+    }
+}
+.sinput {
+    background: #ffffff;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    border-radius: 1.4rem;
+    ion-icon {
+        float: left;
+        color: #a3a3a3;
+        font-size: 2rem;
+        padding: 0.4rem 0.4rem 0.4rem 1rem;
+    }
+}
+
+ion-content {
+    --padding-top: 0.5rem;
+    ion-slides {
+        margin: 0rem 1rem;
+        border-radius: 0.8rem;
+        height: 12rem;
+        ion-slide {
+            width: 100%;
+            height: 12rem;
+            overflow: hidden;
+            img-lazy-load {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.liveAdvancelist {
+    margin: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    ul {
+        li {
+            width: 12rem;
+            float: left;
+            list-style: none;
+            margin-right: 1rem;
+            border: 1px solid #f5f5f5;
+            border-radius: 0.5rem;
+            text-align: center;
+            .imgbox {
+                width: 100%;
+                height: 9rem;
+            }
+            p {
+                padding: 0.4rem;
+                text-align: center;
+            }
+            .ltitle {
+                width: 100%;
+                height: 3.5rem;
+                font-size: 12px;
+                text-align: left;
+                margin: 0.5rem 0rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .ltime {
+                width: 100%;
+                height: 3rem;
+                text-align: left;
+                .ltime-ico {
+                    color: #ffffff;
+                    background: #ff426e;
+                    border-radius: 0.4rem;
+                    margin-left: 0.5rem;
+                    padding: 0.2rem 0.3rem;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                }
+                .ltime-itm {
+                    color: #fe5b52;
+                    font-size: 1.1rem;
+                    padding: 0.2rem 0.3rem;
+                }
+            }
+        }
+    }
+}
+.livebox {
+    width: 100%;
+    min-height: 250px;
+    background: #f7f7f5;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    .livetypebar {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    ul {
+        li {
+            width: 5rem;
+            height: 4rem;
+            float: left;
+            line-height: 4rem;
+            text-align: center;
+            font-size: 1.7rem;
+            color: #828282;
+            position: relative;
+            .abar {
+                display: none;
+            }
+        }
+        .active {
+            font-size: 1.8rem;
+            color: #000000;
+            .abar {
+                display: block;
+                width: 3rem;
+                height: 0.3rem;
+                position: absolute;
+                bottom: 0.2rem;
+                left: 1rem;
+                border-radius: 0.15rem;
+            }
+        }
+    }
+}
+.livelist {
+    width: 100%;
+    .rleft {
+        padding-right: 0.6rem;
+    }
+    .rright {
+        padding-left: 0.6rem;
+    }
+    .liveitem {
+        background: white;
+        border-radius: 0.8rem;
+        text-align: center;
+        .lvct {
+            position: absolute;
+            top: 1.5rem;
+            left: 1rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 0.7rem;
+            padding-right: 0.5rem;
+            z-index: 999;
+            .ltxt {
+                color: #ff6b71;
+                font-size: 0.8rem;
+                float: left;
+                padding: 0rem 0.5rem;
+                height: 1.5rem;
+                line-height: 1.5rem;
+                border-radius: 0.7rem;
+                background: #fae4e5;
+                font-weight: normal;
+                ion-icon {
+                    float: left;
+                    color: #ff346c;
+                    font-size: 1.2rem;
+                }
+            }
+            .rtxt {
+                color: #ffffff;
+                font-size: 0.8rem;
+                float: left;
+            }
+        }
+        .rvct {
+            position: absolute;
+            width: 3rem;
+            height: 3rem;
+            right: 1rem;
+            top: 1rem;
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.8rem;
+            z-index: 999;
+        }
+        .uvct {
+            position: absolute;
+            bottom: 5.5rem;
+            left: 1rem;
+            z-index: 999;
+            img {
+                float: left;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+            }
+            .utxt {
+                float: left;
+                color: #ffffff;
+                font-size: 1.4rem;
+            }
+        }
+        .imgbox {
+            width: 100%;
+            height: 15rem;
+        }
+        .ltxt {
+            padding: 0.8rem 0.2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            word-break: break-all;
+        }
+    }
+}
+.nomore {
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+}

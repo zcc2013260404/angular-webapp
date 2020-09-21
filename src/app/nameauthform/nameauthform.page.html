@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (tap)="goBack()">
+        <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+<!--      <ion-button class="godbtn" (tap)="save()">-->
+<!--        <ion-text class="godtxt rcolor">保存</ion-text>-->
+<!--      </ion-button>-->
+    </ion-buttons>
+    <ion-title>提交信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ul>
+    <li>
+      <ion-input placeholder="真实姓名" [(ngModel)]="adata.realname"></ion-input>
+    </li>
+    <li>
+      <ion-input placeholder="身份证号码" [(ngModel)]="adata.idnumber"></ion-input>
+    </li>
+  </ul>
+  <section class="full-width">
+  <ion-button expand="full" color="danger" (tap)="save()">保存</ion-button>
+  </section>
+</ion-content>

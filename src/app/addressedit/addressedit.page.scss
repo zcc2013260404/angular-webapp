@@ -1,0 +1,64 @@
+ion-toolbar {
+    padding-right: 1rem;
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+    .godtxt {
+        font-size: 1.3rem;
+    }
+    .godbtn {
+        margin-left: 1rem;
+    }
+}
+ion-content {
+    --background: #f4f4f4;
+    padding: 1rem;
+    li {
+        background: white;
+        border-bottom: 1px solid #ebebeb;
+        padding: 1rem;
+        .ctbox {
+            height: 4rem;
+            line-height: 4rem;
+            display: flex;
+            justify-content: center;
+            .ctitle {
+                color: #888;
+                flex: 1;
+            }
+            // .cname{
+            //     margin-left: 1rem;
+            // }
+            // .goricon {
+            //     float: right;
+            //     color: #e7e7e7;
+            //     font-size: 2rem;
+            //     margin-top: 1rem;
+            // }
+           
+            .custom-options{
+               width: 8rem;
+               padding: 0.6rem;
+
+            }
+        }
+    }
+    .dfbox {
+        height: 5rem;
+        line-height: 5rem;
+        margin-top: 2rem;
+        background: white;
+        border-bottom: 1px solid #ebebeb;
+        ion-checkbox {
+            float: right;
+            width: 2rem;
+            height: 2rem;
+            margin: 1.5rem;
+        }
+    }
+}

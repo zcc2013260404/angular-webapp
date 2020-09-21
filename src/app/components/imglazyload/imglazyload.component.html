@@ -1,0 +1,6 @@
+<div class="imgloading"
+    [ngStyle]="{'border-top-left-radius': bordertopleftradius,'border-top-right-radius': bordertoprightradius,'border-bottom-left-radius': borderbottomleftradius,'border-bottom-right-radius': borderbottomrightradius}">
+    <span *ngIf="!imgLoadComplete&&imgShowLoadingTxt" [ngStyle]="{'line-height': imgLoadingTxtLineHeight}">微莕直播</span>
+    <ion-img [src]="imgSrc" [ngClass]="{'imgShow': imgLoadComplete}" (ionImgDidLoad)="imgDidLoad($event)"
+        (ionError)="imgError()"></ion-img>
+</div>

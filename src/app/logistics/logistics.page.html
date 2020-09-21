@@ -1,0 +1,37 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>物流信息</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="box">
+    <div class="title">{{wname}}&nbsp;&nbsp;{{wnum}}</div>
+    <div class="content">
+      <ul class="layui-timeline">
+        <li class="layui-timeline-item" *ngFor="let item of logisticsData">
+          <div class="relative">
+            <span class="time-first">{{item.wdate}}<br /><span class="tm">{{item.wtime}}</span></span>
+          </div>
+          <i class="layui-icon layui-timeline-axis circle"></i>
+          <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">{{item.wstxt}}</h3>
+            <p>
+              {{item.wctxt}}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

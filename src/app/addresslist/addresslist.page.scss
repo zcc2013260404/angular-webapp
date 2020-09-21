@@ -1,0 +1,75 @@
+ion-toolbar {
+    padding-right: 1rem;
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+    .godtxt {
+        font-size: 1.3rem;
+    }
+    .godbtn {
+        margin-left: 1rem;
+    }
+}
+ion-content {
+    --background: #f4f4f4;
+    li {
+        padding: 1rem 0rem 1rem 1rem;
+        border-bottom: 1px solid #ebebeb;
+        background: white;
+        .item-box {
+            display: flex;
+            .item-box-left {
+                flex: 1;
+                padding: 0.5rem;
+                .ntxt {
+                    position: relative;
+                    width: 100%;
+                    line-height: 2rem;
+                    .nt {
+                        font-size: 1.5rem;
+                    }
+                    .np {
+                        margin-left: 2rem;
+                        color: #888;
+                    }
+                    .df {
+                        padding: 0.1rem;
+                        border: 1px solid #ff6b71;
+                        border-radius: 0.2rem;
+                        position: absolute;
+                        right: 0rem;
+                        top: 0rem;
+                        font-size: 1.1rem;
+                        line-height: 1.5rem;
+                    }
+                }
+                .dtxt {
+                    width: 100%;
+                    line-height: 2rem;
+                    .nd {
+                        line-height: 2rem;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                }
+            }
+            .item-box-right {
+                width: 7rem;
+                height: 7rem;
+                line-height: 7rem;
+                border-left: 1px dashed #f8f8f8;
+                text-align: center;
+                ion-text {
+                    color: #555555;
+                }
+            }
+        }
+    }
+}

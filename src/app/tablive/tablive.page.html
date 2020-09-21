@@ -1,0 +1,102 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#ff6b71'}">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="lbtns">
+        <ion-button (click)="goMessage()">
+          <ion-icon class="htico iconfont icon-message"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" class="message lbtns">
+        <ion-button (click)="goCart()">
+          <ion-icon class="htico iconfont icon-gouwuche"></ion-icon>
+          <ion-badge color="danger" class="badge" *ngIf="sccount>0">{{sccount}}</ion-badge>
+        </ion-button>
+      </ion-buttons>
+      <ion-input class="sinput" placeholder="搜索直播间" readonly="true" (click)="goSearch()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-input>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="松开刷新" refreshingSpinner="bubbles"
+      refreshingText="更新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-slides pager="true" *ngIf="slidesList.length" #lpicslide [options]="slidesOpts"
+    (ionSlideTouchEnd)="slideTouchEnd()">
+    <ion-slide *ngFor="let item of slidesList">
+      <img-lazy-load [src]="item.pic" [loadingTxtLineHeight]="'12rem'"></img-lazy-load>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="liveAdvancelist">
+    <ul class="clearfix" [ngStyle]="{'width': liveAdvanceListWidth}">
+      <li *ngFor="let item of liveAdvanceList" (click)="subs()">
+        <div class="imgbox">
+          <img-lazy-load [src]="item.pic" [borderRadius]="'0.5rem,0.5rem,0rem,0rem'" [loadingTxtLineHeight]="'9rem'">
+          </img-lazy-load>
+        </div>
+        <div class="ltitle">&nbsp;{{item.rm}}</div>
+        <div class="ltime">
+          <span class="ltime-ico">预</span>
+          <span class="ltime-itm">&nbsp;今天{{item.rt}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="livebox">
+    <div class="livetypebar">
+      <ul class="clearfix" [ngStyle]="{'width': liveTypeListWidth}">
+        <li [ngClass]="{active:item.ltid==activeLiveType}" *ngFor="let item of liveTypeList"
+          (click)="switchLiveType(item.ltid)">
+          {{item.ltname}}
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+      </ul>
+    </div>
+    <div class="livelist">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6" [ngClass]="{'rleft': i%2==0,'rright':i%2!=0}" *ngFor="let item of liveList;let i=index">
+            <div class="liveitem" (click)="golive(item.lid,item.url)">
+              <div class="lvct">
+                <span class="ltxt">
+                  <ion-icon class="iconfont icon-living"></ion-icon>
+                  <span style="float: left;">&nbsp;直播中</span>
+                </span>
+                <span class="rtxt">&nbsp;{{item.vcount}}人观看</span>
+              </div>
+              <div class="rvct">
+                <ion-icon name="heart" class="rcolor" style="font-size: 1.5rem;"></ion-icon>
+                {{item.zcount}}
+              </div>
+              <div class="uvct">
+                <img [src]="item.rpic" onerror="this.src='../../assets/img_err.png'"/>
+                <span class="utxt">&nbsp;{{item.lname}}</span>
+              </div>
+              <div class="imgbox">
+                <img-lazy-load [src]="item.lpic" [borderRadius]="'0.8rem,0.8rem,0rem,0rem'" [loadingTxtLineHeight]="'15rem'">
+                </img-lazy-load>
+              </div>
+              <div class="ltxt">{{item.ltitle}}</div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <ion-infinite-scroll *ngIf="!isLastPage" threshold="50px" (ionInfinite)="loadLiveData($event)" style="background: #f7f7f5">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="数据加载中">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+  <div class="nomore" *ngIf="isLastPage&&pn>0">没有更多数据</div>
+</ion-content>

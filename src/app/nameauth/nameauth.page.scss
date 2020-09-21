@@ -1,0 +1,80 @@
+@import "../../assets/img/auth/auth_iconfont.css";
+ion-toolbar {
+    padding-right: 1rem;
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+}
+ion-content {
+    --background: #f4f4f4;
+    .noData {
+        margin-top: 5rem;
+        text-align: center;
+        color: #666666;
+        ion-icon {
+            font-size: 10rem;
+            color: #ddd;
+            width: 20rem;
+            height: 13rem;
+        }
+        ion-text {
+            line-height: 2.2rem;
+        }
+    }
+    .hadTags {
+        background: #5E85EA;
+        margin-top: 0rem;
+        padding: 5rem 0;
+        text-align: center;
+        color: #FFF;
+        .cards {
+            font-size: 10rem;
+            color: #FFF;
+            width: 20rem;
+            height: 13rem;
+        }
+        .hadyed{
+          color: #15c975;
+          font-size: 3rem;
+          position: absolute;
+          margin-top: -0.4rem;
+        }
+        ion-text {
+            font-size: 1.75rem;
+            line-height: 2.2rem;
+            padding-left: 3rem;
+        }
+    }
+    .nameInfo{
+        padding: 1rem;
+        li {
+            background: white;
+            // border-bottom: 1px solid #ebebeb;
+            padding: 1rem;
+            .ctbox {
+                height: 4rem;
+                line-height: 4rem;
+                .ctitle {
+                    color: #bababa;
+                }
+                .cname{
+                    margin-left: 1rem;
+                }
+                .goricon {
+                    float: right;
+                    color: #e7e7e7;
+                    font-size: 2rem;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+    .labtitle{
+        color:#333;
+    }
+}

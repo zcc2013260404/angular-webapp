@@ -1,0 +1,51 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop}">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (tap)="goBack()">
+          <ion-text>跳过</ion-text>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-text class="ltxt">请登录</ion-text>
+  </div>
+  <div>
+    <ion-text class="stxt">欢迎来到微莕直播</ion-text>
+  </div>
+  <div style="margin-top: 4rem;padding: 1.5rem 0rem;border-bottom: 1px solid #E3E3E3;">
+    <ion-input class="sinput" placeholder="请输入手机号" [(ngModel)]="phone" maxlength="11">
+      <ion-icon class="iconfont icon-phone"></ion-icon>
+    </ion-input>
+  </div>
+  <div style="padding: 1.5rem 0rem;border-bottom: 1px solid #E3E3E3;">
+    <ion-input class="sinput" placeholder="请输入验证码" maxlength="6" [(ngModel)]="code" (ionChange)="change()">
+      <ion-icon class="iconfont icon-im_yanzhengma"></ion-icon>
+      <ion-text class="code" (tap)="sendCode()">{{codeText}}</ion-text>
+    </ion-input>
+  </div>
+  <div style="margin-top: 2rem;">
+    <ion-button class="lbtn" fill="clear" (tap)="login()" [ngClass]="{'lbtnactive': codeleng>=4}">登录</ion-button>
+  </div>
+  <div class="ologin-box">
+    <div class="ologin-title">
+      <div class="line">
+        <ion-text class="txt">&nbsp;其他登录方式&nbsp;</ion-text>
+      </div>
+    </div>
+    <div class="ologin-lg" (tap)="wxLogin()">
+      <div class="img-box">
+        <ion-icon class="iconfont icon-weixin"></ion-icon>
+      </div>
+      <div class="img-txt" style="color: #868686;">微信登录</div>
+    </div>
+    <div class="ologin-xy">
+      登录即代表您已同意<ion-text class="xy rcolor">《微莕直播服务协议》</ion-text>
+    </div>
+  </div>
+</ion-content>

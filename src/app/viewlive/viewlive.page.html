@@ -1,0 +1,197 @@
+<ion-content>
+  <div class="prism-player" id="livePlayer" (tap)="showFooter=true"></div>
+  <img class="live_video_poster" *ngIf="showLivePoster" src="../../assets/live_bg.jpg"
+    onerror="this.src='../../assets/live_error_bg.png'" />
+  <div class="commentbox" #msgContent [style.touch-action]="'pan-y'" *ngIf="floadingsuccess" (tap)="showFooter=true">
+    <ul #msgContentBox>
+      <li>
+        <div class="cbox">
+          <ion-text class="cn">{{userInfo.uname}}</ion-text>
+          <ion-text class="ct">来了</ion-text>
+        </div>
+      </li>
+      <li>
+        <div class="cbox">
+          <ion-text class="cn">{{userInfo.uname}}</ion-text>
+          <ion-text class="ct">郑重提示：平台依法对直播进行24小时巡查，倡导绿色直播，文明互动。购买前请确认商品描述与实际商品一致，不要通过其他方式（如直接转账）进行交易，谨防上当受骗！</ion-text>
+        </div>
+      </li>
+      <li *ngFor="let item of msgList">
+        <div class="cbox">
+          <ion-text class="cn">{{item.uname}}</ion-text>
+          <ion-text class="ct">{{item.umsg}}</ion-text>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <canvas id="thumsCanvas" width="200" height="943" style="width: 53px; height: 250px;"></canvas>
+  <div class="inputbox" *ngIf="!showFooter&&floadingsuccess" [ngStyle]="{'bottom': msgboxbottom+'px'}">
+    <ion-input #msginput placeholder="对主播，说出你的心里话~" maxlength="20" [(ngModel)]="msg"></ion-input>
+    <div class="sbtn rbackground" (tap)="send()">发送</div>
+  </div>
+  <div class="footbox" *ngIf="showFooter&&floadingsuccess">
+    <div class="bugbages" (click)="goGoods();$event.stopPropagation();">
+      <div class="box">
+        <ion-text class="txt">42</ion-text>
+        <img src="../../assets/bugpage.png">
+      </div>
+    </div>
+    <div class="ibox">
+      <div class="sinput" (tap)="showSendBox()">说点什么呢~</div>
+    </div>
+    <div class="bbox">
+      <ul>
+        <li (click)="share();$event.stopPropagation();">
+          <div class="ico">
+            <ion-icon name="arrow-redo"></ion-icon>
+          </div>
+          <div class="txt">分享</div>
+        </li>
+        <li (tap)="praise()">
+          <div class="ico">
+            <ion-icon name="heart"></ion-icon>
+          </div>
+          <div class="txt">点赞</div>
+          <div class="znum rbackground" *ngIf="lpcount<1000&&lpcount>0">{{lpcount}}</div>
+          <div class="znum rbackground" *ngIf="lpcount>9999">{{(lpcount/10000).toFixed(2)+'万'}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="lpersonbox" *ngIf="floadingsuccess">
+    <img [src]="lpic" onerror="this.src='../../assets/nologin.png'" />
+    <div class="utxt">
+      <div class="un">{{userInfo.uname}}</div>
+      <div class="us">{{lscount}}人观看</div>
+    </div>
+    <div class="gcle rbackground" *ngIf="lkeep==0" (tap)="keepZb()">关注</div>
+    <div class="gcle" *ngIf="lkeep==1"><span class="rcolor">已关注</span></div>
+  </div>
+  <div class="lpinfo" *ngIf="floadingsuccess">
+    <div class="lpidbox">亲密值{{lqmval}}</div>
+    <div class="lzbid">直播ID:{{zid}}</div>
+    <div class="wxbid rbackground">微莕ID:{{lwxid}}</div>
+  </div>
+  <img src="../../assets/close.png" class="closeico" (tap)="close()" />
+</ion-content>
+<div class="gslid-box" [@showChooseGoods]="showGoods? 'up':'down'">
+  <div class="slist">
+    <ul>
+      <li *ngFor="let item of sList">
+        <img-lazy-load [src]="item.pic" [borderRadius]="'0.6rem,0rem,0.6rem,0rem'" [loadingTxtLineHeight]="'8rem'">
+        </img-lazy-load>
+        <div class="sproinfo">
+          <ion-text class="sproms">{{item.des}}</ion-text>
+          <ion-text class="sprokc rcolor">
+            ￥{{item.pri}}
+            <ion-text class="sprojg">库存：{{item.inv}}</ion-text>
+          </ion-text>
+          <ion-text class="sprofg" (tap)="addGoods()">
+            去购买
+          </ion-text>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="sslid-box" [@showShareType]="showShare? 'up':'down'">
+  <ul>
+    <li (tap)="shareWxFrind()">
+      <div class="ico"><img src="../../assets/weixin.png" /></div>
+      <div class="txt">微信好友</div>
+    </li>
+    <li (tap)="shareWxQ()">
+      <div class="ico"><img src="../../assets/weixinq.png" /></div>
+      <div class="txt">朋友圈</div>
+    </li>
+  </ul>
+</div>
+
+<div class="tslid-box" [@showChooseType]="showTypebox? 'up':'down'">
+  <ion-icon name="close-circle-outline" class="closebtn" (tap)="closeMask()"></ion-icon>
+  <div class="slid-box-top">
+    <div class="slid-box-content">
+      <img src="../../assets/06.jpg" />
+      <div class="slid-box-txt">
+        <div class="pri rcolor">55.90</div>
+        <div class="knm">库存&nbsp;1000</div>
+        <div class="stxt">选中规格&nbsp;{{gattr1}}&nbsp;{{gattr2}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="slid-box-center">
+    <div class="typebox">
+      <div class="typebox-title">颜色</div>
+      <div class="typebox-items">
+        <div class="typebox-item" [ngClass]="{'active': vtype1=='1'}" (tap)="selectAttr1(1,'颜色1')">
+          <img src="../../assets/08.jpg" />
+          <ion-text>颜色1</ion-text>
+        </div>
+        <div class="typebox-item" [ngClass]="{'active': vtype1=='2'}" (tap)="selectAttr1(2,'颜色2')">
+          <img src="../../assets/08.jpg" />
+          <ion-text>颜色2</ion-text>
+        </div>
+        <div class="typebox-item" [ngClass]="{'active': vtype1=='3'}" (tap)="selectAttr1(3,'颜色3')">
+          <img src="../../assets/08.jpg" />
+          <ion-text>颜色3</ion-text>
+        </div>
+      </div>
+    </div>
+
+    <div class="typebox">
+      <div class="typebox-title">尺寸</div>
+      <div class="typebox-items">
+        <div class="typebox-item" [ngClass]="{'active': vtype2=='4'}" (tap)="selectAttr2(4,'S')">
+          <ion-text>S</ion-text>
+        </div>
+        <div class="typebox-item" [ngClass]="{'active': vtype2=='5'}" (tap)="selectAttr2(5,'M')">
+          <ion-text>M</ion-text>
+        </div>
+        <div class="typebox-item" [ngClass]="{'active': vtype2=='6'}" (tap)="selectAttr2(6,'L')">
+          <ion-text>L</ion-text>
+        </div>
+        <div class="typebox-item" [ngClass]="{'active': vtype2=='7'}" (tap)="selectAttr2(7,'XL')">
+          <ion-text>XL</ion-text>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slid-box-bottom">
+    <div class="slid-box-bottom-num">
+      <ul>
+        <li style="padding-left: 2rem">购买数量</li>
+        <li>
+          <div class="cart_num">
+            <div class="input_left" (tap)="addNum()">
+              <ion-icon name="add-outline"></ion-icon>
+            </div>
+            <div class="input_center">
+              <input type="text" readonly="readonly" [(ngModel)]="mnum"/>
+            </div>
+            <div class="input_right" (tap)="minusNum()">
+              <ion-icon name="remove-outline"></ion-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="slid-box-bottom-btn">
+      <ul>
+        <li>
+          <ion-button fill="clear" size="small" class="gbtn" (tap)="addCart()">加入购物车</ion-button>
+        </li>
+        <li>
+          <ion-button fill="clear" size="small" class="mbtn rbackground" (tap)="mail()">立即购买</ion-button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mask" *ngIf="showGoods||showShare||showTypebox" (click)="closeMask();$event.stopPropagation();"></div>
+<div class="loading" *ngIf="isloading"
+  style="width:5rem;height:5rem;-webkit-transform:translate3d(-50%, -50%, 0);transform:translate3d(-50%, -50%, 0);">
+  <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+</div>
+<div class="live_video_play" *ngIf="showReplay" (tap)="replay()"></div>
+<div class="live_video_paused" *ngIf="showReplay">直播太火爆了，请重试</div>

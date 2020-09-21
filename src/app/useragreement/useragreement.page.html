@@ -1,0 +1,19 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>用户协议</ion-title>
+    </ion-toolbar>
+  </div>
+  </ion-header>
+
+<ion-content>
+  <div class="content" [innerHTML]="info"></div>
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

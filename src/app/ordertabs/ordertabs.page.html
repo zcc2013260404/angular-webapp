@@ -1,0 +1,34 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>我的订单</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="orderall">
+        <ion-label>全部</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="orderdf">
+        <ion-label>侍付款</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="orderdc">
+        <ion-label>侍发货</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="orderds">
+        <ion-label>侍收货</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="orderyw">
+        <ion-label>已完成</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

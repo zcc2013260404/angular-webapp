@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-wxlive" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>wxlive</name>
+    <js-module name="Wxlive" src="www/wxlive.js">
+        <clobbers target="Wxlive" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Wxlive">
+                <param name="android-package" value="daimarufeng.wxlive.Wxlive" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/Wxlive.java" target-dir="src/daimarufeng/wxlive" />
+        <source-file src="src/android/CameraPreviewFrameView.java" target-dir="src/daimarufeng/wxlive" />
+        <source-file src="src/android/MResource.java" target-dir="src/daimarufeng/wxlive" />
+        <source-file src="src/android/WxlivePushActivity.java" target-dir="src/daimarufeng/wxlive" />
+        <source-file src="src/android/layout/activity_swcamera_streaming.xml" target-dir="src/main/res/layout" />
+    </platform>
+</plugin>

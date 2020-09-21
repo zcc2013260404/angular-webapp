@@ -1,0 +1,120 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>订单详情</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="otitle">
+    <ion-text class="oflagtxt" *ngIf="orderData.type==0" style="top: 35%;">已取消</ion-text>
+    <ion-text class="oflagtxt" *ngIf="orderData.type==1" style="top: 25%;">侍付款</ion-text>
+    <ion-text class="oflagtxt" *ngIf="orderData.type==2" style="top: 35%;">侍发货</ion-text>
+    <ion-text class="oflagtxt" *ngIf="orderData.type==3" style="top: 35%;">侍收货</ion-text>
+    <ion-text class="oflagtxt" *ngIf="orderData.type==4" style="top: 35%;">已完成</ion-text>
+    <ion-text class="timetxt" *ngIf="orderData.type==1">{{dftxt}}</ion-text>
+    <img src="../../assets/order_detail_back.png" />
+  </div>
+  <div class="address-item-box">
+    <div class="oitem-l">
+      <ion-icon slot="start" class="iconfont icon-dizhi rcolor rdz"></ion-icon>
+    </div>
+    <div class="oitem-r">
+      <ul>
+        <li class="sp">{{orderData.pname}}&nbsp;&nbsp;{{orderData.pphone}}</li>
+        <li class="sd">{{orderData.paddress}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="order-item-box">
+    <div class="order-item-content" *ngFor="let item of orderData.glist">
+      <div class="order-item-content-left">
+        <img [src]="item.gpic" />
+      </div>
+      <div class="order-item-content-right">
+        <div class="tinfo">
+          <ion-text class="ttxt">{{item.gm}}</ion-text>
+          <ion-text class="gtxt">{{item.gg}}</ion-text>
+        </div>
+        <div class="pinfo">
+          <ion-text class="ptxt">￥{{item.gp}}</ion-text>
+          <ion-text class="ntxt">x{{item.gn}}</ion-text>
+        </div>
+      </div>
+    </div>
+    <div class="order-item-footer">
+      <div class="order-item-footer-info">
+        <ul>
+          <li style="color: #000;font-size: 1.6rem;">
+            <ion-text class="tl">商品合计</ion-text>
+            <ion-text class="tr">￥{{orderData.hmv}}</ion-text>
+          </li>
+          <li>
+            <ion-text class="tl">运费</ion-text>
+            <ion-text class="tr">+￥{{orderData.ymv}}</ion-text>
+          </li>
+          <li>
+            <ion-text class="tl">余额</ion-text>
+            <ion-text class="tr">-￥{{orderData.emv}}</ion-text>
+          </li>
+          <li>
+            <ion-text class="tl">活动抵扣</ion-text>
+            <ion-text class="tr">-￥{{orderData.zmv}}</ion-text>
+          </li>
+          <li>
+            <ion-text class="tl">特币抵扣</ion-text>
+            <ion-text class="tr">-￥{{orderData.tmv}}</ion-text>
+          </li>
+          <li>
+            <ion-text class="tl">优惠劵抵扣</ion-text>
+            <ion-text class="tr">-￥{{orderData.jmv}}</ion-text>
+          </li>
+          <li style="color: #000;font-size: 1.6rem;line-height: 4rem;border-top: 1px solid #f3f3f3;">
+            <ion-text class="tl">应付金额</ion-text>
+            <ion-text class="tr rcolor">￥{{orderData.fmv}}</ion-text>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="orderinfo-item-box">
+    <ul>
+      <li>订单编号：{{orderData.oid}}</li>
+      <li>创建时间：{{orderData.ctime}}</li>
+      <li>付款时间：{{orderData.ftime}}</li>
+    </ul>
+  </div>
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>
+<ion-toolbar *ngIf="orderData.type==1">
+  <ion-button fill="clear" size="small" class="button button-outline obtn" (tap)="cancelOrder()">取消订单</ion-button>
+  <ion-button fill="clear" size="small" class="button button-outline obtn fbtn" (tap)="goBuy()">去付款</ion-button>
+</ion-toolbar>
+<div class="slid-box" [@showChooseType]="showBuy? 'up':'down'">
+  <div class="puytitle">请选择支付方式</div>
+  <div class="puytype" (tap)="checkType(0)">
+    <img src="../../assets/weixin.png" />
+    <ion-text>微信</ion-text>
+    <img src="../../assets/img_checkbox_selected.png" class="ckbox" *ngIf="wxCheck" />
+    <img src="../../assets/img_checkbox_un_selected.png" class="ckbox" *ngIf="!wxCheck" />
+  </div>
+  <div class="puytype" (tap)="checkType(1)">
+    <img src="../../assets/alipay.png" />
+    <ion-text>支付宝</ion-text>
+    <img src="../../assets/img_checkbox_selected.png" class="ckbox" *ngIf="zfbCheck" />
+    <img src="../../assets/img_checkbox_un_selected.png" class="ckbox" *ngIf="!zfbCheck" />
+  </div>
+  <div class="puybutton">
+    <ion-button fill="clear" shape="round" class="rbackground" (tap)="goPay()">去支付</ion-button>
+  </div>
+</div>
+<div class="mask" *ngIf="showBuy" (tap)="closeBuy($event)"></div>

@@ -1,0 +1,65 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>消息中心</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)" *ngIf="activeIndex==1">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="松开刷新" refreshingSpinner="bubbles"
+      refreshingText="更新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="messagebox">
+    <div class="messagetypebar">
+      <ul class="clearfix">
+        <li [ngClass]="{'active': activeIndex==0}" (tap)="messageSwitch(0)">
+          聊天
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+        <li [ngClass]="{'active': activeIndex==1}" (tap)="messageSwitch(1)">
+          公告
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+      </ul>
+    </div>
+    <div class="messagelist">
+      <ion-list lines="full">
+<!--        <div class="item-box" *ngIf="activeIndex==0">-->
+<!--          &lt;!&ndash; <ion-item *ngFor="let item of mdata">-->
+<!--            <div class="item-left">-->
+<!--              <img src="../../assets/icon/favicon.png" />-->
+<!--            </div>-->
+<!--            <div class="item-right">{{item.title}}</div>-->
+<!--          </ion-item> &ndash;&gt;-->
+<!--        </div>-->
+        <div class="item-box">
+          <ion-item *ngFor="let item of mdata">
+            <div class="item-left">
+              <img [src]="item.pic" />
+            </div>
+            <div class="item-right">
+              <div class="item-right-tbox">
+                <div class="item-right-title">{{item.nt}}</div>
+                <div class="item-right-time">{{item.ns}}</div>
+              </div>
+              <div class="item-right-stitle">{{item.nm}}</div>
+            </div>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

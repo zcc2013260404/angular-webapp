@@ -1,0 +1,42 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button class="godbtn" (tap)="add()">
+          <ion-text class="godtxt rcolor">新增收货地址</ion-text>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>地址管理</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ul>
+    <li *ngFor="let item of adata">
+      <div class="item-box">
+        <div class="item-box-left">
+          <div class="ntxt">
+            <ion-text class="nt">{{item.realname}}</ion-text>
+            <ion-text class="np">{{item.mobile}}</ion-text>
+            <ion-text class="df rcolor" *ngIf="item.isdefault=='1'">默认</ion-text>
+          </div>
+          <div class="dtxt">
+            <ion-text class="nd">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</ion-text>
+          </div>
+        </div>
+        <div class="item-box-right">
+          <ion-text (tap)="edit(item.id)">编辑</ion-text>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

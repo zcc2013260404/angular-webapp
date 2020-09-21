@@ -1,0 +1,128 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar class="gtitle">
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-segment mode="md" class="goodsegment" [(ngModel)]="activeTab">
+        <ion-segment-button value="main" (tap)="goodsTabSwitch(0)">
+          <ion-label>宝贝</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="info" (tap)="goodsTabSwitch(1)">
+          <ion-label>详情</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content [ngClass]="{'content-mask':showTypebox}" [scrollEvents]="true" (ionScroll)="onContentScrolling($event)">
+  <ion-slides pager="true" #goodPicSlide [options]="slidesOpts" (ionSlideTouchEnd)="slideTouchEnd()"
+    [ngStyle]="{'height': sheight+'px'}">
+    <ion-slide *ngFor="let item of data.slidepic">
+      <img-lazy-load [src]="item" [loadingTxtLineHeight]="sheight+'px'"></img-lazy-load>
+    </ion-slide>
+  </ion-slides>
+  <div class="goodtitlebox">
+    <div class="goodtitle-pri-sl">
+      <ion-text class="npri rcolor">￥{{data.npri}}</ion-text>
+      <ion-text class="opri">原价￥{{data.opri}}</ion-text>
+      <ion-text class="smnum">销量{{data.stotal}}件</ion-text>
+    </div>
+    <div class="goodtitle-mt">
+      {{data.title}}
+    </div>
+    <div class="goodtitle-st">
+      {{data.subtitle}}
+    </div>
+  </div>
+  <div class="goodselectbox" (tap)="chooseType()" *ngIf="data.hasattr">
+    <div class="st"></div>
+    <ion-text class="txt">规格 </ion-text>
+    <ion-icon class="sxtion" slot="start" name="chevron-forward-outline"></ion-icon>
+    <ion-text class="sxt">请选择       {{data.spec_titles}}</ion-text>
+  </div>
+  <div class="goodsplit" #goodsplit>
+    <div class="goodsplit-line">
+      <ion-text class="goodsplit-txt">宝贝详情</ion-text>
+    </div>
+  </div>
+  <div class="goodinfobox" [innerHTML]='data.ginfo'></div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-box">
+      <div class="footer-box-left">
+        <div class="btn-item" (tap)="goService()">
+          <ion-icon class="iconfont icon-kefu"></ion-icon>
+          <ion-text>客服</ion-text>
+        </div>
+        <div class="btn-item" [routerLink]="['/shoppingcart']">
+          <ion-badge color="danger" class="badge" *ngIf="sccount>0">{{sccount}}</ion-badge>
+          <ion-icon class="iconfont icon-gouwuche"></ion-icon>
+          <ion-text>购物车</ion-text>
+        </div>
+      </div>
+      <div class="footer-box-right">
+        <ion-button fill="clear" size="small" class="mbtn rbackground" (tap)="buy()">立即购买</ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+<div class="slid-box" [@showChooseType]="showTypebox? 'up':'down'">
+  <ion-icon name="close-circle-outline" class="closebtn" (tap)="closeChooseType()"></ion-icon>
+  <div class="slid-box-top">
+    <div class="slid-box-content">
+      <img [src]="sthumb" onerror="this.src='../../assets/img_err.png'"/>
+      <div class="slid-box-txt">
+        <div class="pri rcolor">{{data.npri}}</div>
+        <div class="knm">库存&nbsp;{{data.ktotal}}</div>
+        <div class="stxt">选中规格&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <div class="slid-box-center">
+    <div class="typebox" *ngFor="let item of attrData">
+      <div class="typebox-title">{{item.title}}</div>
+      <div class="typebox-items">
+        <div class="typebox-item" *ngFor="let aitem of item.items" [ngClass]="{'active': aitem.checked}" (tap)="selectAttr(item.fid,aitem.xid)">
+<!--          <img [src]="aitem.thumb" *ngIf="aitem.thumb!=''" onerror="this.src='../../img_err.png'" />-->
+          <ion-text>{{aitem.title}}</ion-text>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slid-box-bottom">
+    <div class="slid-box-bottom-num">
+      <ul>
+        <li style="padding-left: 2rem">购买数量</li>
+        <li>
+          <div class="cart_num">
+            <div class="input_left" (tap)="addNum()">
+              <ion-icon name="add-outline"></ion-icon>
+            </div>
+            <div class="input_center">
+              <input type="text" readonly="readonly" [(ngModel)]="mnum" />
+            </div>
+            <div class="input_right" (tap)="minusNum()">
+              <ion-icon name="remove-outline"></ion-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="slid-box-bottom-btn">
+      <ul>
+        <li>
+          <ion-button fill="clear" size="small" class="gbtn" (tap)="addCart()">加入购物车</ion-button>
+        </li>
+        <li>
+          <ion-button fill="clear" size="small" class="mbtn rbackground" (tap)="mail()">立即购买</ion-button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mask" *ngIf="showTypebox" (tap)="closeChooseType2($event)"></div>

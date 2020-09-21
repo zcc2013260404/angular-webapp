@@ -1,0 +1,16 @@
+ion-toolbar {
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+}
+.tabs-inner {
+    background: #f4f4f4 !important;
+}
+.tab-selected {
+    border-bottom: 2px solid #ec1446;
+}

@@ -1,0 +1,193 @@
+@import "../../assets/img/order/order_iconfont.css";
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ion-content {
+    --background: #f4f4f4;
+    .ndata {
+        color: #666666;
+        text-align: center;
+        padding-top: 2rem;
+    }
+    .goodsdiv {
+        background: #fff;
+        margin-bottom: 1rem;
+    }
+    .order-box {
+        background: #f4f4f4;
+        padding: 0.8rem;
+        .order-item-box {
+            // background: #ffffff;
+            border-radius: 1rem;
+            margin-bottom: 0.6rem;
+            .order-item-title {
+                height: 3.5rem;
+                line-height: 3.5rem;
+                border-bottom: 1px solid #fafafa;
+                .stxt {
+                    font-weight: bold;
+                    padding-left: 0.5rem;
+                    ion-icon {
+                        float: left;
+                        font-size: 2.5rem;
+                        color: #585858;
+                        margin-left: 0.5rem;
+                    }
+                }
+                .ftxt {
+                    float: right;
+                    padding-right: 1rem;
+                }
+            }
+            .order-item-content {
+                display: flex;
+                border-bottom: 1px solid #f3f3f3;
+                padding: 1rem 1rem 0rem 1rem;
+                .order-item-content-left {
+                    float: left;
+                    width: 12rem;
+                    height: 12rem;
+                    padding: 0rem 1rem;
+                    img {
+                        width: 10rem;
+                        height: 10rem;
+                        border-radius: 0.6rem;
+                    }
+                }
+                .order-item-content-right {
+                    float: left;
+                    flex: 1;
+                    .tinfo {
+                        height: 8rem;
+                        .ttxt {
+                            line-height: 2.1rem;
+                            font-weight: bold;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                        }
+                        .gtxt {
+                            color: #939393;
+                            padding: 0.6rem 0rem;
+                            display: block;
+                        }
+                    }
+                    .pinfo {
+                        height: 3rem;
+                        .ptxt {
+                            color: #fa2229;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            .order-item-footer {
+                .order-item-footer-info {
+                    text-align: right;
+                    padding: 1.5rem 0rem;
+                }
+                .order-item-footer-btns {
+                    text-align: right;
+                    padding: 0rem 0rem 1rem 0rem;
+                    .obtn {
+                        width: 8rem;
+                        --background: #ffffff;
+                        --border-color: #a3a3a3;
+                        --border-radius: 2rem;
+                        --border-width: 1px;
+                        --color: #a3a3a3;
+                        --padding-bottom: 0px;
+                        --padding-end: 1rem;
+                        --padding-start: 1rem;
+                        --padding-top: 0px;
+                        font-size: 1.3rem;
+                        margin: 0rem 0.5rem;
+                    }
+                    .fbtn {
+                        --border-color: #fa2229;
+                        --color: #fa2229;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.slid-box {
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+    z-index: 10000;
+    background: #ffffff;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    .puytitle {
+        width: 100%;
+        height: 4rem;
+        line-height: 4rem;
+        border-bottom: 1px solid #fafafa;
+        padding-left: 0.5rem;
+        font-size: 1.5rem;
+    }
+    .puytype {
+        width: 100%;
+        height: 6rem;
+        line-height: 6rem;
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-left: 1rem;
+            vertical-align: middle;
+        }
+        ion-text {
+            padding-left: 0.7rem;
+        }
+        .ckbox {
+            width: 2rem;
+            height: 2rem;
+            margin: 1.5rem;
+            float: right;
+        }
+    }
+    .puybutton {
+        width: 100%;
+        height: 7rem;
+        line-height: 6rem;
+        border-top: 1px solid #fafafa;
+        text-align: center;
+        ion-button {
+            width: 90%;
+            background: #f88d90;
+            color: white;
+            border-radius: 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(9, 9, 9, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.nomore {
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    border-top: 1px solid #f1f1f1;
+}

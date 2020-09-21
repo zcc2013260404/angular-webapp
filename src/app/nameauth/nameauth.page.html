@@ -1,0 +1,52 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (tap)="goBack()">
+        <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end"  *ngIf="!isNameauth">
+      <ion-button (tap)="goAuth()">
+        <ion-button>
+          认证
+        </ion-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>实名认证</ion-title>
+  </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!isNameauth; else templateName" class="noData">
+    <ion-icon class="iconfont icon-card"></ion-icon><br/>
+    <ion-text>您暂时还没有实名认证哦~<br/>认证后即可实现海外购</ion-text>
+  </div>
+  <ng-template #templateName>
+    <div class="hadTags">
+      <ion-icon class="iconfont icon-card cards"></ion-icon>
+      
+      <br/>
+      <ion-icon class="hadyed" name="checkmark-circle"></ion-icon> <ion-text>恭喜，您已通过实名认证！</ion-text>
+    </div>
+    <div class="nameInfo">
+      <ul>
+        <li>
+         
+          <ion-item>
+            <ion-label class="labtitle">真实姓名：</ion-label>
+            <ion-input [(ngModel)]="adata.realname" disabled></ion-input>
+          </ion-item>
+        </li>
+        <li>
+         
+          <ion-item>
+            <ion-label  class="labtitle">身份证号码：</ion-label>           
+            <ion-input [(ngModel)]="adata.idnumber" disabled></ion-input>
+          </ion-item>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-content>
+  <img src="../../assets/live_bg.jpg" class="bg" />
+  <div class="title">
+    <ion-buttons slot="start">
+      <ion-button (tap)="goBack()">
+        <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        <span style="color: #FFFFFF;font-weight:bold;">返回</span>
+      </ion-button>
+    </ion-buttons>
+  </div>
+  <div class="noinfobox">
+    <div class="noinfo rbackground">微莕ID:2020093</div>
+  </div>
+  <div class="lpicbox">
+    <img src="../../assets/live_bg.jpg" /><br />
+    匠心有爱
+  </div>
+  <div class="ltmbox">
+    <div class="ltbox">
+      <ion-icon name="alarm-outline"></ion-icon><span>2020/06/13 10:10</span>
+    </div>
+  </div>
+  <div class="btn yb" (tap)="sublive()">预约直播间</div>
+  <div class="btn gq" (tap)="goBack()">去逛其他直播间</div>
+</ion-content>

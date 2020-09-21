@@ -1,0 +1,37 @@
+ion-toolbar {
+    padding-right: 1rem;
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+}
+ion-content {
+    --background: #f4f4f4;
+    --padding-top: 3rem;
+    --padding-bottom: 3rem;
+    --padding-start: 3rem;
+    --padding-end: 3rem;
+    ion-text {
+        display: block;
+        line-height: 3.5rem;
+    }
+    ion-input {
+        border: 1px solid #aaa;
+        margin-top: 3rem;
+        border-radius: 0.5rem;
+        background: white;
+        --padding-start: 0.5rem;
+    }
+    ion-button {
+        width: 100%;
+        background: #f88d90;
+        color: white;
+        border-radius: 0.5rem;
+        margin-top: 4rem;
+        font-size: 1.5rem;
+    }
+}

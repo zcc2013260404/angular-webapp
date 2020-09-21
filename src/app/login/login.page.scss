@@ -1,0 +1,118 @@
+@import "../../assets/img/login/login_iconfont.css";
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ion-toolbar {
+    padding-right: 1rem;
+    --border-width: 0px !important;
+    ion-text {
+        color: #000000;
+        font-size: 1.3rem;
+    }
+    ion-icon {
+        color: #8e8e8e;
+        font-size: 1.6rem;
+    }
+}
+ion-content {
+    --padding-start: 2rem;
+    --padding-end: 2rem;
+    .ltxt {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .stxt {
+        font-size: 1.5rem;
+        padding-top: 1rem;
+    }
+    .sinput {
+        background: #ffffff;
+        height: 2.8rem;
+        line-height: 2.8rem;
+        ion-icon {
+            float: left;
+            color: #a7afb2;
+            font-size: 2.2rem;
+            padding: 0.4rem 1rem 0.4rem 0.4rem;
+        }
+        .code {
+            position: absolute;
+            right: 0.5rem;
+        }
+    }
+    .lbtn {
+        width: 100%;
+        height: 4rem;
+        line-height: 4rem;
+        border-radius: 2rem;
+        background: #f4f4f4;
+        color: #919191;
+    }
+    .lbtnactive{
+        background: #ff4a50;
+        color: #ffffff;
+    }
+    .ologin-box {
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        bottom: 10px;
+        .ologin-lg {
+            width: 8rem;
+            height: 8rem;
+            margin: 1rem auto 2rem auto;
+            text-align: center;
+            .img-box {
+                width: 5rem;
+                height: 5rem;
+                line-height: 5rem;
+                text-align: center;
+                background: #e6fae3;
+                border-radius: 50%;
+                margin: 0rem auto;
+                ion-icon {
+                    color: #04a717;
+                    font-size: 4rem;
+                }
+            }
+            .img-txt {
+                text-align: center;
+                color: #8d8d8d;
+                font-size: 1.2rem;
+                margin-top: 0.5rem;
+            }
+        }
+        .ologin-title {
+            text-align: center;
+            color: #7f7f7f;
+            padding: 1rem 0rem;
+            .line {
+                width: 100%;
+                height: 3rem;
+                border-bottom: 1px solid #f4f4f4;
+            }
+            .txt {
+                margin-top: 20px;
+                display: inline-block;
+                background: #fff;
+            }
+        }
+        .ologin-xy {
+            text-align: center;
+            color: #454545;
+            ion-checkbox {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            .xy {
+                font-weight: bold;
+            }
+        }
+    }
+}

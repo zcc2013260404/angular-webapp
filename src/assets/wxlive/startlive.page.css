@@ -1,0 +1,277 @@
+.content {
+    --overflow: hidden;
+    background-position: 50% 50%;
+    background-size: cover;
+    font-size: 13px;
+}
+.content .live_video_poster {
+    z-index: 0;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+.content .lpersonbox {
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    width: 190px;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    border-radius: 20px;
+    display: flex;
+}
+
+.content .lpersonbox img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.content .lpersonbox .utxt {
+    flex: 1;
+    padding: 2px 5px;
+}
+
+.content .lpersonbox .utxt .un {
+    width: 100%;
+    max-width: 90px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    font-weight: bold;
+}
+.content .lpersonbox .utxt .us {
+    width: 100%;
+    height: 16px;
+    line-height: 16px;
+    font-weight: bold;
+}
+
+.timeblk {
+    position: absolute;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    top: 70px;
+    right: 10px;
+}
+.timeblk img {
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+}
+.wxtxt {
+    position: absolute;
+    color: #ffffff;
+    font-size: 11px;
+    right: 10px;
+    top: 30px;
+}
+.zbtxt {
+    position: absolute;
+    color: #ffffff;
+    font-size: 11px;
+    right: 10px;
+    top: 50px;
+}
+.commentbox {
+    position: absolute;
+    left: 10px;
+    bottom: 80px;
+    width: 250px;
+    height: 250px;
+    overflow: auto;
+}
+.commentbox li {
+    width: 100%;
+    margin-bottom: 6px;
+    text-decoration: none;
+    list-style: none;
+}
+.commentbox li .cbox {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+.commentbox li .cbox .cn {
+    color: #ff544d;
+    line-height: 22px;
+}
+.commentbox li .cbox .ct {
+    padding-left: 6px;
+    color: white;
+    line-height: 22px;
+}
+#livePlayer {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: url(../../assets/live_default_bg.png) no-repeat;
+    background-size: 100% 100%;
+}
+.inputbox {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    padding: 10px;
+    background: #fff;
+}
+.inputbox ion-input {
+    --background: #f9f9f9;
+    --padding-bottom: 0px;
+    --padding-top: 0px;
+    --padding-start: 10px;
+    flex: 1;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #d5d5d5;
+    border-right: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.inputbox .sbtn {
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.footbox {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0px;
+    bottom: 20px;
+    display: flex;
+}
+.bugbages {
+    width: 70px;
+    height: 100%;
+    text-align: center;
+}
+.bugbages .box .txt {
+    color: white;
+    position: absolute;
+    font-size: 13px;
+    top: 35px;
+    left: 10px;
+    width: 50px;
+    text-align: center;
+}
+.bugbages .box img {
+    width: 60px;
+    height: 60px;
+}
+.ibox {
+    flex: 1;
+}
+.ibox .sinput {
+    color: white;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 15px 5px 5px 5px;
+    padding: 5px 6px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+.bbox {
+    width: 150px;
+    height: 100%;
+}
+.bbox li {
+    width: 33.33%;
+    float: left;
+    position: relative;
+}
+.bbox li .ico {
+    height: 30px;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+.bbox li .txt {
+    height: 20px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+.gslid-box {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 300px;
+    z-index: 10000;
+    overflow: auto;
+    padding: 10px;
+    background: #ffffff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.sslid-box {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 100px;
+    z-index: 10000;
+    background: #ffffff;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+}
+.sslid-box ul {
+    width: 160px;
+    margin: 20px auto;
+}
+.sslid-box ul li {
+    width: 80px;
+    height: 60px;
+    float: left;
+    text-align: center;
+}
+.sslid-box ul li .ico {
+    width: 100%;
+}
+.sslid-box ul li .ico img {
+    width: 40px;
+    padding: 4px;
+    background: #fff;
+    border-radius: 50%;
+}
+.sslid-box ul li .txt {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+}
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(107, 107, 107, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+.loading ion-spinner {
+    width: 50px;
+    height: 50px;
+}

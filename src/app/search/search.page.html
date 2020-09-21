@@ -1,0 +1,87 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="end" class="message lbtns">
+        <ion-button class="gobbtn" (tap)="goBack()">
+          <ion-text class="gobtxt">取消</ion-text>
+        </ion-button>
+      </ion-buttons>
+      <ion-input class="sinput" placeholder="搜索" [(ngModel)]="keyword" (keyup.enter)="search()"
+        (ionFocus)="isSearch=false">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-input>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content [ngClass]="{'sbg':isSearch}">
+  <div *ngIf="!isSearch">
+    <div class="stbar">
+      <ion-icon class="iconfont icon-hot"></ion-icon>
+      <ion-text>热搜</ion-text>
+    </div>
+    <div class="hbox">
+      <ion-text *ngIf="stype=='goods'">点击搜索商品</ion-text>
+      <ion-text *ngFor="let item of hotwords" (tap)="keySearch(item)">{{item}}</ion-text>
+    </div>
+    <div class="stbar" style="margin-top: 3rem;">
+      <ion-icon class="iconfont icon-shijian"></ion-icon>
+      <ion-text>搜索历史</ion-text>
+      <ion-icon class="iconfont icon-shanchu" style="float: right;" (tap)="clearHisWord()"></ion-icon>
+    </div>
+    <div class="lbox">
+      <ion-text *ngFor="let item of hiswords" (tap)="keySearch(item)">{{item}}</ion-text>
+    </div>
+  </div>
+  <div *ngIf="isSearch">
+    <div class="slist" *ngIf="stype == 'goods'" style="background: #f7f6fb;">
+      <ul>
+        <li *ngFor="let item of sList">
+          <img [src]="item.thumb" />
+          <div class="sproinfo">
+            <ion-text class="sproms">{{item.title}}</ion-text>
+            <ion-text class="sprokc">
+              库存：{{item.total}}
+            </ion-text>
+            <ion-text class="sprojg">￥{{item.productprice}}</ion-text>
+            <ion-text class="sprofg">立即抢购</ion-text>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="slist" *ngIf="stype == 'live'" style="background: #ffffff;">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6" [ngClass]="{'rleft': i%2==0,'rright':i%2!=0}" *ngFor="let item of sList;let i=index">
+            <div class="liveitem">
+              <div class="ltitle">{{item.ltitle}}</div>
+              <div class="linfo">
+                <div class="lstatus rbackground" *ngIf="item.lflag=='0'">预告</div>
+                <div class="lstatus" *ngIf="item.lflag=='1'">可回放</div>
+                <div class="lstxt" *ngIf="item.lflag=='0'">{{item.ltime}}</div>
+                <div class="lstxt" *ngIf="item.lflag=='1'">{{item.lvnum}}人观看</div>
+              </div>
+              <img [src]="item.lpic" />
+              <div class="lper">
+                <img class="lper-pic" [src]="item.lzpic" />
+                <span class="lper-txt">{{item.lzmc}}</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div *ngIf="isSearch&&sList.length==0" style="width: 100%;height:4rem;line-height:4rem;text-align: center;color:#555">暂没有搜索到结果哦~</div>
+
+  <ion-infinite-scroll *ngIf="isSearch&&!isLastPage" threshold="10px" (ionInfinite)="searchPaper($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="数据加载中">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>
+<div class="nomore" *ngIf="isSearch&&isLastPage&&pn>0">没有更多数据</div>

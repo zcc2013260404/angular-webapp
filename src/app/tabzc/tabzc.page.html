@@ -1,0 +1,86 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-title>种草</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" immediate-check="false" (ionRefresh)="loadData($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="松开刷新" refreshingSpinner="bubbles"
+      refreshingText="更新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- <div class="item" [routerLink]="['/goodinfo']" [queryParams]="123">
+    <div class="item-l">
+      <img src="../../assets/main_tx.jpg" />
+    </div>
+    <div class="item-r">
+      <div class="item-r-utitle">
+        <div class="uname">寅将军1V9</div>
+        <div class="utime">03-19</div>
+        <div class="ebtn rbackground"
+          (click)="share('1','Romand03<br />咖啡色很消肿！<br />显得眼睛很深邃<br />珠光色也超级blingbling');$event.stopPropagation();">
+          <ion-icon name="arrow-redo-outline"></ion-icon>
+        </div>
+      </div>
+      <div class="item-r-content">
+        <div class="txt">
+          Romand03<br />
+          咖啡色很消肿！<br />
+          显得眼睛很深邃<br />
+          珠光色也超级blingbling
+        </div>
+        <div class="pic">
+          <ul>
+            <li>
+              <img src="../../assets/zc/pro_pic02.jpg" />
+            </li>
+            <li>
+              <img src="../../assets/zc/pro_pic03.jpg" />
+            </li>
+            <li>
+              <img src="../../assets/zc/pro_pic04.jpg" />
+            </li>
+            <li>
+              <img src="../../assets/zc/pro_pic05.jpg" />
+            </li>
+            <li>
+              <img src="../../assets/zc/pro_pic06.jpg" />
+            </li>
+            <li>
+              <img src="../../assets/zc/pro_pic07.jpg" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!--  <div class="item" *ngFor="let item of data" [routerLink]="['/goodinfo']" [queryParams]="{id:item.gid}">-->
+  <div class="item" *ngFor="let item of data">
+    <div class="item-l">
+      <img [src]="item.rpic" onerror="this.src='../../assets/img_err.png'" />
+    </div>
+    <div class="item-r">
+      <div class="item-r-utitle">
+        <div class="uname">{{item.rname}}</div>
+        <div class="utime">{{item.rtime}}</div>
+        <div class="ebtn rbackground" (click)="share(item.spic,item.content,item.url);$event.stopPropagation();">
+          <ion-icon name="arrow-redo-outline"></ion-icon>
+        </div>
+      </div>
+      <div class="item-r-content">
+        <div class="txt">{{item.content}}</div>
+        <div class="pic">
+          <ul>
+            <li *ngFor="let img of item.images">
+              <img [src]="img" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

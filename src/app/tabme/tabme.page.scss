@@ -1,0 +1,127 @@
+@import "../../assets/img/me/me_iconfont.css";
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 22px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.bgcolor {
+  --background: #f4f4f4;
+}
+.ubox {
+  width: 100%;
+  height: 17rem;
+}
+.orderbox {
+  margin: 0px 1rem;
+  margin-top: -4rem;
+  height: 13rem;
+  background: #ffffff;
+  border-radius: 1rem;
+}
+ion-list {
+  margin: 1rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 0rem 2rem;
+}
+ion-item {
+  font-size: 1.32rem;
+  --color: #000000;
+  --border-color: #e2e2e2;
+  --padding-start: 0rem;
+  --inner-padding-end: 0rem;
+  --min-height: 5rem;
+}
+.item-icon-left {
+  margin-right: 1rem;
+  color: #000000;
+}
+.item-icon-right {
+  margin-right: 0rem;
+  color: #7f7f7f;
+  font-size: 1.6rem;
+}
+ion-item ion-note {
+  color: #7f7f7f;
+  margin-right: 0rem;
+  font-size: 1.1rem;
+}
+.orderbox ion-list {
+  margin: 1rem 0rem;
+}
+.orderbox ion-grid {
+  margin: 0rem;
+}
+.orderbox ion-grid ion-col {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0rem;
+}
+
+.ubox .uinfo {
+  position: absolute;
+  top: 6rem;
+  left: 0rem;
+  display: flex;
+  width: 100%;
+}
+
+.ubox .uheader {
+  width: 8rem;
+  height: 8rem;
+  text-align: center;
+  line-height: 8rem;
+  vertical-align: middle;
+  ion-avatar {
+    width: 5rem;
+    height: 5rem;
+    margin: 1.5rem;
+  }
+}
+.ubox .utxt {
+  flex: 1;
+  .nologintxt {
+    width: 12rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding-top: 2.5rem;
+  }
+  .uname {
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    color: #ffffff;
+    font-size: 1.8rem;
+  }
+  .uphone {
+    width: 100%;
+    height: 4rem;
+    color: #ffffff;
+    font-size: 1.6rem;
+  }
+}
+
+.ubox .sgrid {
+  position: absolute;
+  right: 1rem;
+  top: 2.5rem;
+  color: #ffffff;
+  font-size: 1rem;
+}
+.badge {
+  // position: absolute;
+  // right: -5px;
+  // top: 0px;
+  font-size: 1rem;
+  background-color: #ff346c;
+}

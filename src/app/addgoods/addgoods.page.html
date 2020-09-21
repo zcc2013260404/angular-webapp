@@ -1,0 +1,55 @@
+<ion-header>
+    <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button (tap)="goBack()">
+                    <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <!-- <ion-title>{{tname}}</ion-title> -->
+            <ion-input class="sinput" placeholder="搜索商品" readonly="true" (tap)="goSearch()">
+                <ion-icon name="search-outline"></ion-icon>
+            </ion-input>
+        </ion-toolbar>
+    </div>
+</ion-header>
+
+<ion-content>
+    <div class="slist">
+        <ul>
+            <li *ngFor="let item of commodityData" [style.touch-action]="'pan-y'">
+                <img [src]="item.thumb" [routerLink]="['/goodinfo']" [queryParams]="{id:item.id}" />
+                <div class="sproinfo">
+                    <ion-text class="sproms">{{item.title}}</ion-text>
+                    <ion-text class="sprokc">
+                        库存：{{item.total}}
+                    </ion-text>
+                    <ion-text class="sprojg">￥{{item.marketprice}}</ion-text>
+                    <ion-text class="sprofg" (tap)="handleAddgoods(item)">立即添加</ion-text>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="isNoData" style="width: 100%;height:4rem;line-height:4rem;text-align: center;color:#555">暂没有搜索到结果哦~
+    </div>
+
+    <ion-infinite-scroll *ngIf="!isLastPage" threshold="10px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="数据加载中">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <div class="loading" *ngIf="isloading">
+        <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+    </div>
+</ion-content>
+<ion-footer-bar align-title="left" class="bar-assertive footers">
+    <div class="buttons">
+        <span>您共选择了<span style="color: coral;"> {{count}} </span>件商品</span>
+        <!-- <button class="button">Left Button</button> -->
+    </div>
+    <div class="buttons submits">
+        <button class="button" (tap)="goonlive()">提 交</button>
+    </div>
+</ion-footer-bar>
+<div class="nomore" *ngIf="isLastPage&&pn>0">没有更多数据</div>

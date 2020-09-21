@@ -1,0 +1,67 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>查看订单</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="address-item-box">
+    <div class="oitem-l">
+      <ion-icon slot="start" class="iconfont icon-dizhi rcolor rdz"></ion-icon>
+    </div>
+    <div class="oitem-r">
+      <ul>
+        <li class="sp">{{addressData.realname}}&nbsp;&nbsp;{{addressData.mobile}}</li>
+        <li class="sd">{{addressData.address}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="order-box" *ngFor="let sitem of data.shopsList">
+
+    <div class="order-item-box" >
+      <div class="order-item-title">
+        <ion-text class="stxt">
+          <ion-icon class="iconfont icon-order-store"></ion-icon>{{sitem.shopname}}
+        </ion-text>
+      </div>
+
+        <div *ngFor="let ssitem of sitem.goods">
+
+          <div class="order-item-content">
+            <div class="order-item-content-left">
+              <img [src]="ssitem.thumb" />
+            </div>
+            <div class="order-item-content-right">
+              <div class="tinfo">
+                <ion-text class="ttxt">{{ssitem.title}}</ion-text>
+                <ion-text class="gtxt">{{ssitem.optiontitle}}</ion-text>
+              </div>
+              <div class="pinfo">
+                <ion-text class="ptxt">￥{{ssitem.marketprice}} </ion-text>*
+                <ion-text class="ptxt"> {{ssitem.total}}</ion-text>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      <div class="order-item-footer">
+        <div class="order-item-footer-info">
+          <ion-text>小计
+            <ion-text class="rcolor" style="font-size:1.5rem;margin: 0rem 1rem;">￥{{data.price}}</ion-text>
+          </ion-text>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+

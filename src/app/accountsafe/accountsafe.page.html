@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (tap)="goBack()">
+        <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>账户与安全</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-item (click)="unbindAlert()">
+      <ion-label class="ttitle">关于微信 <span class="rcolor" style="margin-left: 1rem;font-weight: normal;">解除绑定</span></ion-label>
+      <ion-note slot="end">代码如疯</ion-note>
+      <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="withdrawAlert()">
+      <ion-label class="ttitle">提现</ion-label>
+      <ion-note slot="end">修改密码</ion-note>
+      <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+    </ion-item>
+    <ion-item lines="none" (click)="phoneAlert()">
+      <ion-label class="ttitle">更换手机号</ion-label>
+      <ion-note slot="end">188****8888</ion-note>
+      <ion-icon slot="end" class="item-icon-right iconfont icon-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

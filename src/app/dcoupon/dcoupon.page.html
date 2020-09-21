@@ -1,0 +1,85 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+<!--      <ion-buttons slot="end">-->
+<!--        <ion-button class="godbtn" (tap)="showdbox=!showdbox">-->
+<!--          <ion-text class="godtxt rcolor">兑换优惠劵</ion-text>-->
+<!--        </ion-button>-->
+<!--      </ion-buttons>-->
+      <ion-title>我的优惠劵</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="dcouponbox">
+    <div class="dcoupontypebar">
+      <ul class="clearfix">
+        <li [ngClass]="{'active': activeIndex==0}" (tap)="switch(0)">
+          未使用<span *ngIf="wcount>0">({{wcount}})</span>
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+        <li [ngClass]="{'active': activeIndex==1}" (tap)="switch(1)">
+          已失效<span *ngIf="scount>0">({{scount}})</span>
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+      </ul>
+    </div>
+    <div class="dcouponlist">
+      <div class="getdcouponbox" *ngIf="showdbox">
+        <ion-input class="cinput" placeholder="请输入优惠卷兑换码" maxlength="10"></ion-input>
+        <div class="rbtnbox">
+          <ion-text class="cbtn rbackground" (tap)="duihuan()">兑换</ion-text>
+        </div>
+      </div>
+      <div *ngIf="wcount==0&&scount==0">
+        <p class="noData">还没有任何内容哦~</p>
+      </div>
+      <ul class="clearfix" *ngIf="activeIndex==0">
+        <li *ngFor="let item of ddata">
+          <div class="item-box-left nrcolor">
+            <img class="pot-top" src="../../assets/box-pot-top.png" />
+            <img class="pot-bottom" src="../../assets/box-pot-bottom.png" />
+            <ion-text class="otxt">劵</ion-text>
+            <ion-text class="ptxt">
+              <ion-text class="dtxt"></ion-text>{{item.deduct}}
+            </ion-text>
+          </div>
+          <div class="item-box-right">
+            <div class="item-box-right-top">{{item.couponname}}</div>
+            <div class="item-box-right-center">至{{item.timestr}}有效</div>
+            <div class="item-box-right-bottom" *ngIf="activeIndex==1">已失效</div>
+            <img class="item-box-right-sts" *ngIf="activeIndex==1" src="../../assets/coupon_overd.png" />
+          </div>
+        </li>
+      </ul>
+
+      <ul class="clearfix" *ngIf="activeIndex==1">
+        <li *ngFor="let item of ddata">
+          <div class="item-box-left ncolor">
+            <img class="pot-top" src="../../assets/box-pot-top.png" />
+            <img class="pot-bottom" src="../../assets/box-pot-bottom.png" />
+            <ion-text class="otxt">劵</ion-text>
+            <ion-text class="ptxt">
+              <ion-text class="dtxt"></ion-text>{{item.deduct}}
+            </ion-text>
+          </div>
+          <div class="item-box-right">
+            <div class="item-box-right-top">{{item.couponname}}</div>
+            <div class="item-box-right-center">至{{item.timestr}}有效</div>
+            <div class="item-box-right-bottom" *ngIf="activeIndex==1">已失效</div>
+            <img class="item-box-right-sts" *ngIf="activeIndex==1" src="../../assets/coupon_overd.png" />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

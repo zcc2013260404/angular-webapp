@@ -1,0 +1,91 @@
+<ion-content>
+  <img class="live_video_poster" src="../../assets/live_default_bg.png" onerror="this.src='../../assets/live_error_bg.png'" />
+  <div class="commentbox" #msgContent [style.touch-action]="'pan-y'" *ngIf="floadingsuccess" (tap)="showFooter=true">
+    <ul #msgContentBox>
+      <li>
+        <div class="cbox">
+          <ion-text class="cn">公告</ion-text>
+          <ion-text class="ct">平台依法对直播进行24小时巡查，倡导绿色直播，文明互动。购买前请确认商品描述与实际商品一致，不要通过其他方式（如直接转账）进行交易，谨防上当受骗！</ion-text>
+        </div>
+      </li>
+      <li *ngFor="let item of msgList">
+        <div class="cbox">
+          <ion-text class="cn">代码如疯</ion-text>
+          <ion-text class="ct">测试</ion-text>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="inputbox" *ngIf="!showFooter&&floadingsuccess" [ngStyle]="{'bottom': msgboxbottom+'px'}">
+    <ion-input #msginput placeholder="对主播，说出你的心里话~" maxlength="20" [(ngModel)]="msg"></ion-input>
+    <div class="sbtn rbackground" (tap)="send()">发送</div>
+  </div>
+  <div class="footbox" *ngIf="showFooter&&floadingsuccess">
+    <div class="bugbages" (click)="goGoods();$event.stopPropagation();">
+      <div class="box">
+        <ion-text class="txt">42</ion-text>
+        <img src="../../assets/bugpage.png">
+      </div>
+    </div>
+    <div class="ibox">
+      <div class="sinput" (tap)="showSendBox()">说点什么呢~</div>
+    </div>
+    <div class="bbox">
+      <ul>
+        <li (tap)="praise()">
+          <div class="ico">
+            <ion-icon name="easel"></ion-icon>
+          </div>
+          <div class="txt">分辨率</div>
+        </li>
+        <li (click)="share();$event.stopPropagation();">
+          <div class="ico">
+            <ion-icon name="arrow-redo"></ion-icon>
+          </div>
+          <div class="txt">分享</div>
+        </li>
+        <li (tap)="goBack()">
+          <div class="ico">
+            <ion-icon name="close"></ion-icon>
+          </div>
+          <div class="txt">关闭</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="lpersonbox" *ngIf="floadingsuccess">
+    <img [src]="lpic" onerror="this.src='../../assets/nologin.png'" />
+    <div class="utxt">
+      <div class="un">代码如疯</div>
+      <div class="us">0人观看 | 0点赞</div>
+    </div>
+  </div>
+  <div class="timeblk">
+    <img src="../../assets/record_start.png" *ngIf="srecordflag" />
+    <ion-text class="txt">{{timerstr}}</ion-text>
+  </div>
+  <ion-text class="wxtxt">微莕ID:12345667</ion-text>
+  <ion-text class="zbtxt">直播ID:65567778</ion-text>
+</ion-content>
+<div class="gslid-box" [@showChooseGoods]="showGoods? 'up':'down'">
+
+</div>
+
+<div class="sslid-box" [@showShareType]="showShare? 'up':'down'">
+  <ul>
+    <li (tap)="shareWxFrind()">
+      <div class="ico"><img src="../../assets/weixin.png" /></div>
+      <div class="txt">微信好友</div>
+    </li>
+    <li (tap)="shareWxQ()">
+      <div class="ico"><img src="../../assets/weixinq.png" /></div>
+      <div class="txt">朋友圈</div>
+    </li>
+  </ul>
+</div>
+
+<div class="mask" *ngIf="showGoods||showShare" (click)="closeMask();$event.stopPropagation();"></div>
+<div class="loading" *ngIf="isloading"
+  style="width:5rem;height:5rem;-webkit-transform:translate3d(-50%, -50%, 0);transform:translate3d(-50%, -50%, 0);">
+  <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+</div>

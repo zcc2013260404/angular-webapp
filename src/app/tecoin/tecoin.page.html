@@ -1,0 +1,61 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>特币列表</ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="tecoinbox">
+    <div class="tecointypebar">
+      <ul class="clearfix">
+        <li [ngClass]="{'active': activeIndex==0}" (tap)="tecoinSwitch(0)">
+          未使用<span *ngIf="wcount>0">({{wcount}})</span>
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+        <li [ngClass]="{'active': activeIndex==1}" (tap)="tecoinSwitch(1)">
+          未生效<span *ngIf="xcount>0">({{xcount}})</span>
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+        <li [ngClass]="{'active': activeIndex==2}" (tap)="tecoinSwitch(2)">
+          已生效<span *ngIf="scount>0">({{scount}})</span>
+          <ion-text class="abar rbackground"></ion-text>
+        </li>
+      </ul>
+    </div>
+    <div class="tecoinlist">
+      <div [ngSwitch]="activeIndex">
+        <div *ngSwitchCase="2">
+          <ul class="clearfix">
+            <li *ngFor="let item of tdata">
+              <div class="item-box-left ncolor">
+                <img class="pot-top" src="../../assets/box-pot-top.png" />
+                <img class="pot-bottom" src="../../assets/box-pot-bottom.png" />
+                <ion-text class="otxt">币</ion-text>
+                <ion-text class="ptxt">
+                  <ion-text class="dtxt">￥</ion-text>{{item.tsum}}
+                </ion-text>
+              </div>
+              <div class="item-box-right">
+                <div class="item-box-right-top">{{item.ttxt}}</div>
+                <div class="item-box-right-center">{{item.tsdate}}至{{item.tedate}}有效</div>
+                <div class="item-box-right-bottom" *ngIf="activeIndex==2">已失效</div>
+                <img class="item-box-right-sts" *ngIf="activeIndex==1" src="../../assets/tebi_noforce.png" />
+                <img class="item-box-right-sts" *ngIf="activeIndex==2" src="../../assets/coupon_overd.png" />
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

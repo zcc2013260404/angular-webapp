@@ -1,0 +1,138 @@
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="松开刷新" refreshingSpinner="bubbles" refreshingText="更新中...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div class="ndata" *ngIf="orderData.length==0">还没有任务内容哦~</div>
+    <div class="order-box" *ngIf="orderData.length>0">
+        <div class="order-item-box" *ngFor="let item of orderData" (click)="orderInfo(item)" [style.touch-action]="'pan-y'">
+
+            <div class="goodsdiv" *ngFor="let items of item.shopsList">
+                <div class="order-item-title">
+                    <ion-text class="stxt">
+                        <!-- <ion-icon class="iconfont icon-order-store"></ion-icon> -->
+                        {{items.shopname}}
+                    </ion-text>
+                    <ion-text class="ftxt rcolor" *ngIf="item.status==0">待付款</ion-text>
+                    <ion-text class="ftxt rcolor" *ngIf="item.status==1">侍发货</ion-text>
+                    <ion-text class="ftxt rcolor" *ngIf="item.status==2">侍收货</ion-text>
+                    <ion-text class="ftxt rcolor" *ngIf="item.status==3">已完成</ion-text>
+                    <ion-text class="ftxt rcolor" *ngIf="item.status==4">退换货</ion-text>
+                </div>
+                <div *ngFor="let itemss of items.goods">
+
+                    <div class="order-item-content">
+                        <div class="order-item-content-left">
+                            <img [src]="itemss.thumb" />
+                        </div>
+                        <div class="order-item-content-right">
+                            <div class="tinfo">
+                                <ion-text class="ttxt">{{itemss.title}}</ion-text>
+                                <ion-text class="gtxt">{{itemss.optiontitle}}</ion-text>
+                            </div>
+                            <div class="pinfo">
+                                <ion-text class="ptxt">￥{{itemss.marketprice}}</ion-text>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-item-footer">
+                        <div class="order-item-footer-info">
+                            <ion-text>共计<span style="color: coral;">{{itemss.total}}</span>件商品&nbsp;合计：
+                                <ion-text class="rcolor" style="font-size:1.5rem;margin-right: 1rem;">￥{{(+itemss.marketprice)*(+itemss.total)}}</ion-text>
+                            </ion-text>
+                        </div>
+<!--                        <div class="order-item-footer-btns">-->
+<!--                            <ion-button fill="clear" size="small" class="button button-outline obtn">查看详情</ion-button>-->
+<!--                            <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="itemss.type==0||itemss.type==1" (click)="cancelOrder(itemss.oid);$event.stopPropagation();">取消订单</ion-button>-->
+<!--                            <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="itemss.type==0" (click)="delOrder(itemss.oid);$event.stopPropagation();">删除订单</ion-button>-->
+<!--                            <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="itemss.type==0">去付款</ion-button>-->
+<!--                            <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="itemss.type==2" (click)="goWlInfo(itemss.oid);$event.stopPropagation();">查看物流</ion-button>-->
+<!--                            <ion-button fill="clear" size="small" class="button button-outline obtn fbtn" *ngIf="itemss.type==2" (click)="goSh(itemss.oid);$event.stopPropagation();">确认收货</ion-button>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="order-item-footer-btns">
+                <ion-button fill="clear" size="small" class="button button-outline obtn">查看详情</ion-button>
+                <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="item.status=='0'||item.status=='1'" (click)="cancelOrder(item.oid);$event.stopPropagation();">取消订单</ion-button>
+                <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="item.status=='0'" (click)="delOrder(item.oid);$event.stopPropagation();">删除订单</ion-button>
+                <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="item.status=='0'" (click)="goBuy(item.id);$event.stopPropagation();">去付款</ion-button>
+                <ion-button fill="clear" size="small" class="button button-outline obtn" *ngIf="item.status=='2'" (click)="goWlInfo(item.oid);$event.stopPropagation();">查看物流</ion-button>
+                <ion-button fill="clear" size="small" class="button button-outline obtn fbtn" *ngIf="item.status=='2'" (click)="goSh(item.oid);$event.stopPropagation();">确认收货</ion-button>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" *ngIf="isloading">
+        <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+    </div>
+</ion-content>
+<!--<div class="slid-box" [@showPwd]="showPwdbox? 'up':'down'">-->
+<!--    <div class="slid-title">-->
+<!--        请输入支付密码-->
+<!--        <ion-icon name="close-outline" class="closebtn" (click)="closePwdBox();$event.stopPropagation();"></ion-icon>-->
+<!--    </div>-->
+<!--    <div class="slid-pwd-box">-->
+<!--        <ion-grid>-->
+<!--            <ion-row>-->
+<!--                <ion-col>{{pwdstr1}}</ion-col>-->
+<!--                <ion-col>{{pwdstr2}}</ion-col>-->
+<!--                <ion-col>{{pwdstr3}}</ion-col>-->
+<!--                <ion-col>{{pwdstr4}}</ion-col>-->
+<!--                <ion-col>{{pwdstr5}}</ion-col>-->
+<!--                <ion-col style="border-right:none;width: 17%;">-->
+<!--                    {{pwdstr6}}-->
+<!--                </ion-col>-->
+<!--            </ion-row>-->
+<!--        </ion-grid>-->
+<!--    </div>-->
+<!--    <div class="slid-key-box">-->
+<!--        <ion-grid>-->
+<!--            <ion-row>-->
+<!--                <ion-col (tap)="keyword(1)">1</ion-col>-->
+<!--                <ion-col (tap)="keyword(2)">2</ion-col>-->
+<!--                <ion-col style="border-right:none;width: 33.34%;" (tap)="keyword(3)">3</ion-col>-->
+<!--            </ion-row>-->
+<!--            <ion-row>-->
+<!--                <ion-col (tap)="keyword(4)">4</ion-col>-->
+<!--                <ion-col (tap)="keyword(5)">5</ion-col>-->
+<!--                <ion-col style="border-right:none;width: 33.34%;" (tap)="keyword(6)">6</ion-col>-->
+<!--            </ion-row>-->
+<!--            <ion-row>-->
+<!--                <ion-col (tap)="keyword(7)">7</ion-col>-->
+<!--                <ion-col (tap)="keyword(8)">8</ion-col>-->
+<!--                <ion-col style="border-right:none;width: 33.34%;" (tap)="keyword(9)">9</ion-col>-->
+<!--            </ion-row>-->
+<!--            <ion-row>-->
+<!--                <ion-col style="background: #eee;"></ion-col>-->
+<!--                <ion-col (tap)="keyword(0)">0</ion-col>-->
+<!--                <ion-col style="border-right:none;width: 33.34%;background: #eee;">-->
+<!--                    <ion-icon class="iconfont icon-backspace ibackspace" (tap)="keyword(-1)"></ion-icon>-->
+<!--                </ion-col>-->
+<!--            </ion-row>-->
+<!--        </ion-grid>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="mask" *ngIf="showPwdbox" (click)="closePwdBox();$event.stopPropagation();"></div>-->
+
+
+<div class="slid-box" [@showChooseType]="showBuy? 'up':'down'">
+    <div class="puytitle">请选择支付方式</div>
+    <div class="puytype" (tap)="checkType(0)">
+        <img src="../../assets/weixin.png" />
+        <ion-text>微信</ion-text>
+        <img src="../../assets/img_checkbox_selected.png" class="ckbox" *ngIf="wxCheck" />
+        <img src="../../assets/img_checkbox_un_selected.png" class="ckbox" *ngIf="!wxCheck" />
+    </div>
+    <div class="puytype" (tap)="checkType(1)">
+        <img src="../../assets/alipay.png" />
+        <ion-text>支付宝</ion-text>
+        <img src="../../assets/img_checkbox_selected.png" class="ckbox" *ngIf="zfbCheck" />
+        <img src="../../assets/img_checkbox_un_selected.png" class="ckbox" *ngIf="!zfbCheck" />
+    </div>
+    <div class="puybutton">
+        <ion-button fill="clear" shape="round" class="rbackground" (tap)="pay()">去支付</ion-button>
+    </div>
+</div>
+<div class="mask" *ngIf="showBuy" (tap)="closeBuy($event)"></div>

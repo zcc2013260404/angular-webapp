@@ -1,0 +1,43 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tabgoods">
+      <ion-icon class="iconfont icon-home"></ion-icon>
+      <ion-label>商品</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tablive">
+      <ion-icon class="iconfont icon-zhibo1"></ion-icon>
+      <ion-label>直播</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tabzc">
+      <ion-icon class="iconfont icon-quanzi"></ion-icon>
+      <ion-label>微种草</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tabstore">
+      <ion-icon class="iconfont icon-dianpu"></ion-icon>
+      <ion-label>店铺精选</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tabme">
+      <ion-icon class="iconfont icon-person"></ion-icon>
+      <ion-label>我的</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
+<div class="slid-box" [@showShareType]="showShare? 'up':'down'">
+  <ul>
+    <li (tap)="shareWxFrind()">
+      <div class="ico"><img src="../../assets/weixin.png" /></div>
+      <div class="txt">微信好友</div>
+    </li>
+    <li (tap)="shareWxQ()">
+      <div class="ico"><img src="../../assets/weixinq.png" /></div>
+      <div class="txt">朋友圈</div>
+    </li>
+  </ul>
+</div>
+<div class="mask" *ngIf="showShare" (click)="closeShare();$event.stopPropagation();"></div>

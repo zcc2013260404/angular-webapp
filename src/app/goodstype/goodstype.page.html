@@ -1,0 +1,43 @@
+<ion-header>
+  <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="lbtns">
+        <ion-button (tap)="goBack()">
+          <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-input class="sinput" placeholder="搜索商品" readonly="true" (tap)="goSearch()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-input>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="cate_content">
+    <div class="cate_left">
+      <ion-list>
+        <ion-item *ngFor="let item of lCateList" (tap)="searchTypeInfo(item.id)"
+          [ngClass]="{'active': item.id==lCateSelId}">
+          <ion-label>{{item.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="cate_right">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4" *ngFor="let item of rCateList" [routerLink]="['/goodtypelist']"
+            [queryParams]="{tid:item.id,tname:item.name}">
+            <img [src]="item.thumb" onerror="this.src='../../assets/img_err.png'" />
+            <p>{{item.name}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="isloading">
+    <ion-spinner name="crescent" class="rcolor"></ion-spinner>
+  </div>
+</ion-content>

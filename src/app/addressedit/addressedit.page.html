@@ -1,0 +1,57 @@
+<ion-header>
+    <div [ngStyle]="{'padding-top': headerBarPaddingTop,'background':'#d1d1d1'}">
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button (tap)="goBack()">
+                    <ion-icon class="gobicon" slot="icon-only" name="chevron-back-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+                <ion-button class="godbtn" (tap)="save()">
+                    <ion-text class="godtxt rcolor">保存</ion-text>
+                </ion-button>
+            </ion-buttons>
+            <ion-title>新增地址</ion-title>
+        </ion-toolbar>
+    </div>
+</ion-header>
+
+<ion-content>
+    <ul>
+        <li>
+            <ion-input placeholder="收货人姓名" [(ngModel)]="adata.realname"></ion-input>
+        </li>
+        <li>
+            <ion-input placeholder="手机号码" [(ngModel)]="adata.mobile"></ion-input>
+        </li>
+        <li>
+            <div class="ctbox">
+                <!-- <div *ngIf="show">
+                    <span>{{getData.province}}</span>
+                    <span>{{getData.city}}</span>
+                    <span>{{getData.area}}</span>
+                   
+                </div> -->
+                <ion-text class="ctitle">&nbsp;所在在区</ion-text>
+                <!-- <ion-text class="cname">{{adata.province}}{{adata.city}}{{adata.area}}</ion-text> -->
+                <ion-select class="custom-options" (ionChange)="getCity($event)" value="{{province1}}" [(ngModel)]="province" cancelText="取消" okText="确定">
+                    <ion-select-option *ngFor="let prov of multiColumnOptions" value="{{prov.name}}">{{prov.name}}</ion-select-option>
+                </ion-select>
+                <ion-select class="custom-options" (ionChange)="getArea($event)" [(ngModel)]="city" value="{{city1}}"  cancelText="取消" okText="确定">
+                    <ion-select-option *ngFor="let citys of cityList" value="{{citys.name}}">{{citys.name}}</ion-select-option>
+                </ion-select>
+                <ion-select class="custom-options" (ionChange)="getaddres($event)" value="{{area1}}" [(ngModel)]="area"  cancelText="取消" okText="确定">
+                    <ion-select-option *ngFor="let areas of areaList" value="{{areas.name}}">{{areas.name}}</ion-select-option>
+                </ion-select>
+                <!-- <ion-icon class="goricon" slot="icon-only" name="chevron-forward-outline"></ion-icon> -->
+            </div>
+        </li>
+        <li>
+            <ion-textarea cols="5" placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元室等" [(ngModel)]="adata.address"></ion-textarea>
+        </li>
+    </ul>
+    <div class="dfbox">
+        <ion-text>设为默认</ion-text>
+        <ion-checkbox color="danger" [(ngModel)]="adata.isdefault"></ion-checkbox>
+    </div>
+</ion-content>

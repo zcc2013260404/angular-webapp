@@ -1,0 +1,56 @@
+@import "../../assets/img/me/me_iconfont.css";
+ion-toolbar {
+    padding-right: 1rem;
+    ion-title {
+        color: #666666;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gobicon {
+        color: #656565;
+    }
+}
+ion-content {
+    --background: #f4f4f4;
+    ion-list {
+        margin: 1rem;
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 0rem 2rem;
+    }
+    ion-item {
+        font-size: 1.32rem;
+        --color: #000000;
+        --border-color: #e2e2e2;
+        --padding-start: 0rem;
+        --inner-padding-end: 0rem;
+        --min-height: 5rem;
+    }
+    ion-item .ttitle {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+    .item-icon-left {
+        margin-right: 1rem;
+        color: #000000;
+    }
+    .item-icon-right {
+        margin-right: 0rem;
+        color: #7f7f7f;
+        font-size: 1.6rem;
+    }
+    ion-item ion-note {
+        margin-right: 0rem;
+        font-size: 1.1rem;
+    }
+    .exitbtn {
+        margin: 1rem;
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 0rem 2rem;
+        height: 4rem;
+        line-height: 4rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+}

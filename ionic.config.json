@@ -1,0 +1,8 @@
+{
+  "name": "wxlive",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

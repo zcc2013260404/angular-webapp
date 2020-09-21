@@ -1,0 +1,51 @@
+@import "../../assets/img/tabs/tabs_iconfont.css";
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 22px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.slid-box {
+  position: absolute;
+  bottom: 0rem;
+  width: 100%;
+  height: 100px;
+  z-index: 10000;
+  background: #ffffff;
+  text-align: center;
+  ul {
+    width: 16rem;
+    margin: 2rem auto;
+    li {
+      width: 8rem;
+      height: 6rem;
+      float: left;
+      text-align: center;
+      .ico {
+        width: 100%;
+        img {
+          width: 3rem;
+        }
+      }
+      .txt {
+        width: 100%;
+        height: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        color: #555555;
+      }
+    }
+  }
+}
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(9, 9, 9, 0.3);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
